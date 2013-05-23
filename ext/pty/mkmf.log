@@ -1,0 +1,160 @@
+have_header: checking for sys/stropts.h... -------------------- no
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+conftest.c:3:25: fatal error: sys/stropts.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/stropts.h>
+/* end */
+
+--------------------
+
+have_func: checking for setresuid()... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘setresuid’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))setresuid; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘setresuid’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { setresuid(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for libutil.h... -------------------- no
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+conftest.c:3:21: fatal error: libutil.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libutil.h>
+/* end */
+
+--------------------
+
+have_header: checking for util.h... -------------------- no
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+conftest.c:3:18: fatal error: util.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <util.h>
+/* end */
+
+--------------------
+
+have_header: checking for pty.h... -------------------- yes
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <pty.h>
+/* end */
+
+--------------------
+
+have_library: checking for openpty() in -lutil... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lutil  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘openpty’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))openpty; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lutil  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘openpty’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { openpty(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for posix_openpt()... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/pty  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lutil  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lutil  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))posix_openpt; return 0; }
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define HAVE_SETRESUID 1
+4: #define HAVE_PTY_H 1
+5: #define HAVE_POSIX_OPENPT 1
+6: #endif
+/* end */
+

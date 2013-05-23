@@ -1,0 +1,46 @@
+#ifndef EXTCONF_H
+#define EXTCONF_H
+#define HAVE_RUBY_NATIVE_THREAD_P 1
+#define HAVE_RB_ERRINFO 1
+#define HAVE_RB_SAFE_LEVEL 1
+#define HAVE_RB_HASH_LOOKUP 1
+#define HAVE_RB_PROC_NEW 1
+#define HAVE_RB_OBJ_UNTRUST 1
+#define HAVE_RB_OBJ_TAINT 1
+#define HAVE_RB_SET_SAFE_LEVEL_FORCE 1
+#define HAVE_RB_SOURCEFILE 1
+#define PACKAGE_VERSION "8.5"
+#define PACKAGE_BUGREPORT ""
+#define PACKAGE_URL ""
+#define TCL_CFGVAL_ENCODING "iso8859-1"
+#define MODULE_SCOPE extern __attribute__((__visibility__("hidden")))
+#define TCL_SHLIB_EXT ".so"
+#define TCL_CFG_DEBUG 1
+#define TCL_TOMMATH 1
+#define MP_PREC 4
+#define _LARGEFILE64_SOURCE 1
+#define TCL_WIDE_INT_TYPE long long
+#define HAVE_STRUCT_STAT64 1
+#define HAVE_OPEN64 1
+#define HAVE_LSEEK64 1
+#define HAVE_TYPE_OFF64_T 1
+#define HAVE_OPENDIR 1
+#define HAVE_STRTOL 1
+#define HAVE_GETADDRINFO 1
+#define USE_TERMIOS 1
+#define TIME_WITH_SYS_TIME 1
+#define HAVE_LOCALTIME_R 1
+#define HAVE_TM_GMTOFF 1
+#define HAVE_TIMEZONE_VAR 1
+#define HAVE_BLKCNT_T 1
+#define HAVE_SIGNED_CHAR 1
+#define HAVE_LANGINFO 1
+#define TCL_UNLOAD_DLLS 1
+#define USE_DTRACE 1
+#define TCL_CFG_OPTIMIZED 1
+#define HAVE_PW_GECOS 1
+#define HAVE_LIBXFT 1
+#define HAVE_XFT 1
+#define RUBY_VERSION "1.9.3"
+#define RUBY_RELEASE_DATE "2013-05-15"
+#endif

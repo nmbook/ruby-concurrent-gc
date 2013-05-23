@@ -1,0 +1,197 @@
+have_header: checking for dlfcn.h... -------------------- yes
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <dlfcn.h>
+/* end */
+
+--------------------
+
+have_library: checking for main() in -ldl... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dlopen()... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘dlopen’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))dlopen; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘dlopen’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { dlopen(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dlclose()... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘dlclose’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))dlclose; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘dlclose’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { dlclose(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dlsym()... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘dlsym’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))dlsym; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘dlsym’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { dlsym(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for dlerror()... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘dlerror’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))dlerror; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -fno-defer-pop -fno-omit-frame-pointer conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘dlerror’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { dlerror(); return 0; }
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define HAVE_DLFCN_H 1
+4: #define HAVE_DLOPEN 1
+5: #define HAVE_DLCLOSE 1
+6: #define HAVE_DLSYM 1
+7: #define HAVE_DLERROR 1
+8: #define RUBY_VERSION "1.9.3"
+9: #endif
+/* end */
+

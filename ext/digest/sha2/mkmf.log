@@ -1,0 +1,93 @@
+package configuration for openssl is not found
+have_library: checking for main() in -lcrypto... -------------------- no
+
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcrypto  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+/usr/bin/ld: cannot find -lcrypto
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcrypto  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: error: too few arguments to function ‘main’
+conftest.c:4:5: note: declared here
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { main(); return 0; }
+/* end */
+
+--------------------
+
+have_type: checking for u_int8_t... -------------------- yes
+
+"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: typedef u_int8_t conftest_type;
+5: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_header: checking for sys/cdefs.h... -------------------- yes
+
+"gcc -E -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/cdefs.h>
+/* end */
+
+--------------------
+
+have_type: checking for uint64_t in defs.h with -DHAVE_CONFIG_H -DHAVE_TYPE_U_INT8_T -DHAVE_SYS_CDEFS_H... -------------------- yes
+
+"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha2 -I../../.././ext/digest/sha2/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DHAVE_CONFIG_H -DHAVE_TYPE_U_INT8_T -DHAVE_SYS_CDEFS_H -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <defs.h>
+4: 
+5: /*top*/
+6: typedef uint64_t conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+1: #ifndef EXTCONF_H
+2: #define EXTCONF_H
+3: #define HAVE_CONFIG_H 1
+4: #define HAVE_TYPE_U_INT8_T 1
+5: #define HAVE_SYS_CDEFS_H 1
+6: #define HAVE_TYPE_UINT64_T 1
+7: #endif
+/* end */
+

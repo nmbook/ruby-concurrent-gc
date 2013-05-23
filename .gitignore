@@ -1,0 +1,7 @@
+*.o
+Makefile
+config.*
+configure
+.cvsignore
+tags
+
