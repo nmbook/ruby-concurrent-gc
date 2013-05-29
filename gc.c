@@ -24,8 +24,10 @@
 #include "ruby_atomic.h"
 #include <stdio.h>
 #include <setjmp.h>
+#include <sys/mman.h>
 #include <sys/types.h>
 #include <assert.h>
+#include <unistd.h>
 
 #ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
@@ -346,6 +348,18 @@ typedef struct mark_stack {
     size_t unused_cache_size;
 } mark_stack_t;
 
+#define SHARED_PAGE_SIZE 4096
+
+struct concurrentgc_shared {
+    VALUE flags;
+    RVALUE *list[SHARED_PAGE_SIZE - sizeof(VALUE)];
+};
+
+#define FREELIST_MIN_SIZE 512
+
+#define CGC_FL_IN_PROGRESS  ((VALUE) (1))
+#define CGC_FL_NEW_SLOT	    ((VALUE) (1 << 1))
+
 #define CALC_EXACT_MALLOC_SIZE 0
 
 typedef struct rb_objspace {
@@ -365,6 +379,7 @@ typedef struct rb_objspace {
 	size_t length;
 	size_t used;
 	RVALUE *freelist;
+	size_t freelist_length;
 	RVALUE *range[2];
 	RVALUE *freed;
 	size_t live_num;
@@ -390,6 +405,7 @@ typedef struct rb_objspace {
 	size_t size;
 	double invoke_time;
     } profile;
+    struct concurrentgc_shared *shared_page;
     struct gc_list *global_list;
     size_t count;
     int gc_stress;
@@ -1100,6 +1116,7 @@ assign_heap_slot(rb_objspace_t *objspace)
 	p->as.free.flags = 0;
 	p->as.free.next = freelist;
 	freelist = p;
+	objspace->heap.freelist_length++;
 	p++;
     }
 }
@@ -1120,8 +1137,20 @@ add_heap_slots(rb_objspace_t *objspace, size_t add)
 }
 
 static void
+init_shared_page(rb_objspace_t *objspace)
+{
+    void *shared_page = mmap(NULL, sizeof(struct concurrentgc_shared), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    if (shared_page == MAP_FAILED) {
+	perror("mmap");
+	exit(1);
+    }
+    objspace->shared_page = (struct concurrentgc_shared *)shared_page;
+}
+
+static void
 init_heap(rb_objspace_t *objspace)
 {
+    init_shared_page(objspace);
     add_heap_slots(objspace, HEAP_MIN_SLOTS / HEAP_OBJ_LIMIT);
     init_mark_stack(&objspace->mark_stack);
 #ifdef USE_SIGALTSTACK
@@ -1182,6 +1211,27 @@ rb_during_gc(void)
     return during_gc;
 }
 
+static void
+concurrent_garbage_collect(rb_objspace_t *objspace)
+{
+    pid_t pid;
+    puts("CONCURRENT GARBAGE COLLECT");
+    objspace->shared_page->flags |= CGC_FL_IN_PROGRESS;
+    objspace->shared_page->list[0] = NULL;
+    pid = fork();
+    if (pid < 0) {
+	perror("fork");
+	exit(1);
+    } else if (pid != 0) {
+	return;
+    } else {
+	/* TODO: garbage collect */
+	/* TODO: set shared_page */
+	/* TODO: signal */
+	exit(0);
+    }
+}
+
 #define RANY(o) ((RVALUE*)(o))
 
 VALUE
@@ -1203,6 +1253,12 @@ rb_newobj(void)
 	}
     }
 
+    if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
+	if ((objspace->shared_page->flags & CGC_FL_IN_PROGRESS) == 0) {
+	    concurrent_garbage_collect(objspace);
+	}
+    }
+
     if (UNLIKELY(!freelist)) {
 	if (!gc_lazy_sweep(objspace)) {
 	    during_gc = 0;
@@ -1212,6 +1268,7 @@ rb_newobj(void)
 
     obj = (VALUE)freelist;
     freelist = freelist->as.free.next;
+    objspace->heap.freelist_length--;
 
     MEMZERO((void*)obj, RVALUE, 1);
 #ifdef GC_DEBUG
@@ -2045,6 +2102,7 @@ add_freelist(rb_objspace_t *objspace, RVALUE *p)
     p->as.free.flags = 0;
     p->as.free.next = freelist;
     freelist = p;
+    objspace->heap.freelist_length++;
 }
 
 static void
@@ -2202,6 +2260,7 @@ static void
 before_gc_sweep(rb_objspace_t *objspace)
 {
     freelist = 0;
+    objspace->heap.freelist_length = 0;
     objspace->heap.do_heap_free = (size_t)((heaps_used * HEAP_OBJ_LIMIT) * 0.65);
     objspace->heap.free_min = (size_t)((heaps_used * HEAP_OBJ_LIMIT)  * 0.2);
     if (objspace->heap.free_min < initial_free_min) {
@@ -3455,6 +3514,7 @@ gc_stat(int argc, VALUE *argv, VALUE self)
     rb_hash_aset(hash, ID2SYM(rb_intern("heap_live_num")), SIZET2NUM(objspace->heap.live_num));
     rb_hash_aset(hash, ID2SYM(rb_intern("heap_free_num")), SIZET2NUM(objspace->heap.free_num));
     rb_hash_aset(hash, ID2SYM(rb_intern("heap_final_num")), SIZET2NUM(objspace->heap.final_num));
+    rb_hash_aset(hash, ID2SYM(rb_intern("heap_freelist_length")), SIZET2NUM(objspace->heap.freelist_length));
     return hash;
 }
 
