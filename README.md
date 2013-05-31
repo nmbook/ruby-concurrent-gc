@@ -15,18 +15,18 @@ Concurrent GC Plan
  * check freelist: do we need to GC (low)?
  * can we go concurrent? if so: call concurrent_garbage_collect()
  * always return new object
-[ ] add concurrent_garbage_collect()
+[x] add concurrent_garbage_collect()
  * same as garbage_collect except only collects a freelist into shared memory
   1. disallow to go concurrent
   2. prepare shared memory
   3. call fork(). if child: call child_garbage_collect(), else: return
-[ ] add child_garbage_collect()
+[x] add child_garbage_collect()
  * actions as child process
   1. call mark
   2. update memory page
   3. signal changes
   4. exit
-[ ] add signal handler for changes
+[x] add signal handler for changes
  * actions as parent process
   1. merge changes
   2. allow to go concurrent again

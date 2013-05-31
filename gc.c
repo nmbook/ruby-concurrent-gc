@@ -24,9 +24,10 @@
 #include "ruby_atomic.h"
 #include <stdio.h>
 #include <setjmp.h>
-#include <sys/mman.h>
 #include <sys/types.h>
 #include <assert.h>
+#include <sys/mman.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
 #ifdef HAVE_SYS_TIME_H
@@ -349,6 +350,7 @@ typedef struct mark_stack {
 } mark_stack_t;
 
 #define SHARED_PAGE_SIZE 4096
+#define SHARED_PAGE_LIST_SIZE (((SHARED_PAGE_SIZE) / sizeof(VALUE)) - 1)
 
 struct concurrentgc_shared {
     VALUE flags;
@@ -358,7 +360,8 @@ struct concurrentgc_shared {
 #define FREELIST_MIN_SIZE 512
 
 #define CGC_FL_IN_PROGRESS  ((VALUE) (1))
-#define CGC_FL_NEW_SLOT	    ((VALUE) (1 << 1))
+#define CGC_FL_HEAPS_INC    ((VALUE) (1 << 1))
+#define CGC_FL_MALLOC_INC   ((VALUE) (1 << 2))
 
 #define CALC_EXACT_MALLOC_SIZE 0
 
@@ -406,6 +409,7 @@ typedef struct rb_objspace {
 	double invoke_time;
     } profile;
     struct concurrentgc_shared *shared_page;
+    pid_t gc_pid;
     struct gc_list *global_list;
     size_t count;
     int gc_stress;
@@ -499,8 +503,8 @@ rb_gc_set_params(void)
 }
 
 #if defined(ENABLE_VM_OBJSPACE) && ENABLE_VM_OBJSPACE
-static void gc_sweep(rb_objspace_t *);
-static void slot_sweep(rb_objspace_t *, struct heaps_slot *);
+static void gc_sweep(rb_objspace_t *, int store_instead);
+static void slot_sweep(rb_objspace_t *, struct heaps_slot *, int store_instead);
 static void rest_sweep(rb_objspace_t *);
 static void free_stack_chunks(mark_stack_t *);
 
@@ -1147,10 +1151,35 @@ init_shared_page(rb_objspace_t *objspace)
     objspace->shared_page = (struct concurrentgc_shared *)shared_page;
 }
 
+static void add_freelist(rb_objspace_t *objspace, RVALUE *p, int store_instead);
+
+static void
+signal_sigchld(int signal)
+{
+    int i = 0;
+    RVALUE *p;
+    //puts("SIGCHLD");
+    if (waitpid(rb_objspace.gc_pid, NULL, 0) != rb_objspace.gc_pid) {
+	perror("waitpid");
+	exit(1);
+    }
+    rb_objspace.gc_pid = 0;
+    p = rb_objspace.shared_page->list[0];
+    for (; p != NULL; i++) {
+	add_freelist(&rb_objspace, p, FALSE);
+	p = rb_objspace.shared_page->list[i];
+    }
+    //printf("MERGED %d FREE\n", i);
+    /* reset flags to end any loops in newobj */
+    rb_objspace.shared_page->flags = 0;
+    //puts("CHILD EXITED");
+}
+
 static void
 init_heap(rb_objspace_t *objspace)
 {
     init_shared_page(objspace);
+    signal(SIGCHLD, signal_sigchld);
     add_heap_slots(objspace, HEAP_MIN_SLOTS / HEAP_OBJ_LIMIT);
     init_mark_stack(&objspace->mark_stack);
 #ifdef USE_SIGALTSTACK
@@ -1211,6 +1240,40 @@ rb_during_gc(void)
     return during_gc;
 }
 
+static int ready_to_gc(rb_objspace_t *objspace);
+static void gc_marks(rb_objspace_t *objspace, int mark_freelist);
+
+static void
+child_garbage_collect(rb_objspace_t *objspace)
+{
+    INIT_GC_PROF_PARAMS;
+
+    printf("start concurrent garbage_collect()\n");
+
+    if (!heaps) {
+	printf("heaps = NULL\n");
+	exit(1);
+    }
+    if (!ready_to_gc(objspace)) {
+	printf("ready_to_gc = FALSE\n");
+	exit(0);
+    }
+
+    GC_PROF_TIMER_START;
+
+    /* rest_sweep(objspace); for lazy sweep */
+
+    during_gc++;
+    gc_marks(objspace, TRUE);
+
+    GC_PROF_SWEEP_TIMER_START;
+    gc_sweep(objspace, TRUE);
+    GC_PROF_SWEEP_TIMER_STOP;
+
+    GC_PROF_TIMER_STOP(Qtrue);
+    printf("end concurrent garbage_collect()\n");
+}
+
 static void
 concurrent_garbage_collect(rb_objspace_t *objspace)
 {
@@ -1218,17 +1281,16 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
     puts("CONCURRENT GARBAGE COLLECT");
     objspace->shared_page->flags |= CGC_FL_IN_PROGRESS;
     objspace->shared_page->list[0] = NULL;
+    objspace->shared_page->list[SHARED_PAGE_LIST_SIZE - 1] = (RVALUE *)(SHARED_PAGE_LIST_SIZE - 1);
     pid = fork();
     if (pid < 0) {
 	perror("fork");
 	exit(1);
-    } else if (pid != 0) {
-	return;
-    } else {
-	/* TODO: garbage collect */
-	/* TODO: set shared_page */
-	/* TODO: signal */
+    } else if (pid == 0) {
+	child_garbage_collect(objspace);
 	exit(0);
+    } else {
+	objspace->gc_pid = pid;
     }
 }
 
@@ -1254,15 +1316,27 @@ rb_newobj(void)
     }
 
     if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
+	/* merge reserve */
+    }
+
+    if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
 	if ((objspace->shared_page->flags & CGC_FL_IN_PROGRESS) == 0) {
 	    concurrent_garbage_collect(objspace);
 	}
     }
 
     if (UNLIKELY(!freelist)) {
-	if (!gc_lazy_sweep(objspace)) {
-	    during_gc = 0;
-	    rb_memerror();
+	while ((objspace->shared_page->flags & CGC_FL_IN_PROGRESS) != 0) {
+	    /* spin until signal */
+	}
+	puts("signaled");
+	/* still empty? */
+	if (UNLIKELY(!freelist)) {
+	    puts("still empty!");
+	    if (!gc_lazy_sweep(objspace)) {
+		during_gc = 0;
+		rb_memerror();
+	    }
 	}
     }
 
@@ -2096,12 +2170,22 @@ gc_mark_children(rb_objspace_t *objspace, VALUE ptr)
 static int obj_free(rb_objspace_t *, VALUE);
 
 static inline void
-add_freelist(rb_objspace_t *objspace, RVALUE *p)
+add_freelist(rb_objspace_t *objspace, RVALUE *p, int store_instead)
 {
-    VALGRIND_MAKE_MEM_UNDEFINED((void*)p, sizeof(RVALUE));
-    p->as.free.flags = 0;
-    p->as.free.next = freelist;
-    freelist = p;
+    if (store_instead) {
+	size_t elements_left = (size_t)objspace->shared_page->list[SHARED_PAGE_LIST_SIZE - 1];
+	if (elements_left > 0) {
+	    objspace->shared_page->list[SHARED_PAGE_LIST_SIZE - elements_left - 1] = p;
+	    objspace->shared_page->list[SHARED_PAGE_LIST_SIZE - elements_left] = NULL;
+	    elements_left--;
+	}
+	objspace->shared_page->list[SHARED_PAGE_LIST_SIZE - 1] = (RVALUE *)elements_left;
+    } else {
+	VALGRIND_MAKE_MEM_UNDEFINED((void*)p, sizeof(RVALUE));
+	p->as.free.flags = 0;
+	p->as.free.next = freelist;
+	freelist = p;
+    }
     objspace->heap.freelist_length++;
 }
 
@@ -2117,7 +2201,7 @@ finalize_list(rb_objspace_t *objspace, RVALUE *p)
             }
             else {
                 GC_PROF_DEC_LIVE_NUM;
-                add_freelist(objspace, p);
+                add_freelist(objspace, p, FALSE);
             }
 	}
 	else {
@@ -2180,7 +2264,7 @@ free_unused_heaps(rb_objspace_t *objspace)
 }
 
 static void
-slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot)
+slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot, int store_instead)
 {
     size_t free_num = 0, final_num = 0;
     RVALUE *p, *pend;
@@ -2190,22 +2274,22 @@ slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot)
     p = sweep_slot->slot; pend = p + sweep_slot->limit;
     while (p < pend) {
         if (!(p->as.basic.flags & FL_MARK)) {
-            if (p->as.basic.flags &&
-                ((deferred = obj_free(objspace, (VALUE)p)) ||
+	    if (p->as.basic.flags &&
+		((deferred = obj_free(objspace, (VALUE)p)) ||
 		 (FL_TEST(p, FL_FINALIZE)))) {
-                if (!deferred) {
-                    p->as.free.flags = T_ZOMBIE;
-                    RDATA(p)->dfree = 0;
-                }
-                p->as.free.flags |= FL_MARK;
-                p->as.free.next = deferred_final_list;
-                deferred_final_list = p;
-                final_num++;
-            }
-            else {
-                add_freelist(objspace, p);
-                free_num++;
-            }
+		if (!deferred) {
+		    p->as.free.flags = T_ZOMBIE;
+		    RDATA(p)->dfree = 0;
+		}
+		p->as.free.flags |= FL_MARK;
+		p->as.free.next = deferred_final_list;
+		deferred_final_list = p;
+		final_num++;
+	    }
+	    else {
+		add_freelist(objspace, p, store_instead);
+		free_num++;
+	    }
         }
         else if (BUILTIN_TYPE(p) == T_ZOMBIE) {
             /* objects to be finalized */
@@ -2277,22 +2361,32 @@ before_gc_sweep(rb_objspace_t *objspace)
 }
 
 static void
-after_gc_sweep(rb_objspace_t *objspace)
+after_gc_sweep(rb_objspace_t *objspace, int store_instead)
 {
     GC_PROF_SET_MALLOC_INFO;
 
     if (objspace->heap.free_num < objspace->heap.free_min) {
-        set_heaps_increment(objspace);
-        heaps_increment(objspace);
+	if (store_instead) {
+	    objspace->shared_page->flags |= CGC_FL_HEAPS_INC;
+	} else {
+	    set_heaps_increment(objspace);
+	    heaps_increment(objspace);
+	}
     }
 
     if (malloc_increase > malloc_limit) {
-	malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
-	if (malloc_limit < initial_malloc_limit) malloc_limit = initial_malloc_limit;
+	if (store_instead) {
+	    objspace->shared_page->flags |= CGC_FL_MALLOC_INC;
+	} else {
+	    malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
+	    if (malloc_limit < initial_malloc_limit) malloc_limit = initial_malloc_limit;
+	}
     }
     malloc_increase = 0;
 
-    free_unused_heaps(objspace);
+    if (!store_instead) {
+	free_unused_heaps(objspace);
+    }
 }
 
 static int
@@ -2303,7 +2397,7 @@ lazy_sweep(rb_objspace_t *objspace)
     heaps_increment(objspace);
     while (objspace->heap.sweep_slots) {
         next = objspace->heap.sweep_slots->next;
-	slot_sweep(objspace, objspace->heap.sweep_slots);
+	slot_sweep(objspace, objspace->heap.sweep_slots, FALSE);
         objspace->heap.sweep_slots = next;
         if (freelist) {
             during_gc = 0;
@@ -2320,11 +2414,11 @@ rest_sweep(rb_objspace_t *objspace)
        while (objspace->heap.sweep_slots) {
            lazy_sweep(objspace);
        }
-       after_gc_sweep(objspace);
+       after_gc_sweep(objspace, FALSE);
     }
 }
 
-static void gc_marks(rb_objspace_t *objspace);
+static void gc_marks(rb_objspace_t *objspace, int mark_free_list);
 
 static int
 gc_lazy_sweep(rb_objspace_t *objspace)
@@ -2350,7 +2444,7 @@ gc_lazy_sweep(rb_objspace_t *objspace)
             GC_PROF_TIMER_STOP(Qfalse);
             return res;
         }
-        after_gc_sweep(objspace);
+        after_gc_sweep(objspace, FALSE);
     }
     else {
         if (heaps_increment(objspace)) {
@@ -2359,7 +2453,7 @@ gc_lazy_sweep(rb_objspace_t *objspace)
         }
     }
 
-    gc_marks(objspace);
+    gc_marks(objspace, FALSE);
 
     before_gc_sweep(objspace);
     if (objspace->heap.free_min > (heaps_used * HEAP_OBJ_LIMIT - objspace->heap.live_num)) {
@@ -2368,7 +2462,7 @@ gc_lazy_sweep(rb_objspace_t *objspace)
 
     GC_PROF_SWEEP_TIMER_START;
     if(!(res = lazy_sweep(objspace))) {
-        after_gc_sweep(objspace);
+        after_gc_sweep(objspace, FALSE);
         if(freelist) {
             res = TRUE;
             during_gc = 0;
@@ -2381,7 +2475,7 @@ gc_lazy_sweep(rb_objspace_t *objspace)
 }
 
 static void
-gc_sweep(rb_objspace_t *objspace)
+gc_sweep(rb_objspace_t *objspace, int store_instead)
 {
     struct heaps_slot *next;
 
@@ -2389,11 +2483,11 @@ gc_sweep(rb_objspace_t *objspace)
 
     while (objspace->heap.sweep_slots) {
         next = objspace->heap.sweep_slots->next;
-	slot_sweep(objspace, objspace->heap.sweep_slots);
+	slot_sweep(objspace, objspace->heap.sweep_slots, store_instead);
         objspace->heap.sweep_slots = next;
     }
 
-    after_gc_sweep(objspace);
+    after_gc_sweep(objspace, store_instead);
 
     during_gc = 0;
 }
@@ -2407,7 +2501,7 @@ rb_gc_force_recycle(VALUE p)
         RANY(p)->as.free.flags = 0;
     }
     else {
-        add_freelist(objspace, (RVALUE *)p);
+        add_freelist(objspace, (RVALUE *)p, FALSE);
     }
 }
 
@@ -2596,8 +2690,22 @@ mark_current_machine_context(rb_objspace_t *objspace, rb_thread_t *th)
 #endif
 }
 
+
+/* NOTE: only call this from forked child! otherwise freelist will be messed up! */
 static void
-gc_marks(rb_objspace_t *objspace)
+mark_current_free_list(rb_objspace_t *objspace, RVALUE *list)
+{
+    RVALUE *p = list;
+    while (p) {
+	/* set 0'd flags to just FL_MARK to indicate to concurrent sweep not to include this in child's freelist */
+	/* do NOT push to mark stack or store that this has been freed, it's already free... */
+	p->as.basic.flags = FL_MARK;
+	p = p->as.free.next;
+    }
+}
+
+static void
+gc_marks(rb_objspace_t *objspace, int mark_free_list)
 {
     struct gc_list *list;
     rb_thread_t *th = GET_THREAD();
@@ -2610,6 +2718,10 @@ gc_marks(rb_objspace_t *objspace)
     SET_STACK_END;
 
     th->vm->self ? rb_gc_mark(th->vm->self) : rb_vm_mark(th->vm);
+
+    if (mark_free_list) {
+	mark_current_free_list(objspace, freelist);
+    }
 
     mark_tbl(objspace, finalizer_table);
     mark_current_machine_context(objspace, th);
@@ -2658,10 +2770,10 @@ garbage_collect(rb_objspace_t *objspace)
     rest_sweep(objspace);
 
     during_gc++;
-    gc_marks(objspace);
+    gc_marks(objspace, FALSE);
 
     GC_PROF_SWEEP_TIMER_START;
-    gc_sweep(objspace);
+    gc_sweep(objspace, FALSE);
     GC_PROF_SWEEP_TIMER_STOP;
 
     GC_PROF_TIMER_STOP(Qtrue);

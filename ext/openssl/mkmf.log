@@ -21,7 +21,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/openssl  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘t_open’ [-Wimplicit-function-declaration]
-/tmp/ccpk4aWc.o: In function `t':
+/tmp/ccEm8rfc.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/openssl/conftest.c:9: undefined reference to `t_open'
 collect2: error: ld returned 1 exit status
 checked program was:

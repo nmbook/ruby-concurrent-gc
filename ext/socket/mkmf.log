@@ -21,7 +21,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘t_open’ [-Wimplicit-function-declaration]
-/tmp/cc1CfsMU.o: In function `t':
+/tmp/cc5ayYRU.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `t_open'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -870,7 +870,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘freehostent’ [-Wimplicit-function-declaration]
-/tmp/ccCfrzOS.o: In function `t':
+/tmp/cc8yomFH.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `freehostent'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -1504,7 +1504,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getpeereid’ [-Wimplicit-function-declaration]
-/tmp/ccJ0Uo8M.o: In function `t':
+/tmp/cczjQYZl.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `getpeereid'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -1565,7 +1565,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getpeerucred’ [-Wimplicit-function-declaration]
-/tmp/cc0FXbUa.o: In function `t':
+/tmp/ccRnkPkW.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `getpeerucred'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -1745,7 +1745,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘hsterror’ [-Wimplicit-function-declaration]
-/tmp/ccbtTJPR.o: In function `t':
+/tmp/cc5J9lXE.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `hsterror'
 collect2: error: ld returned 1 exit status
 checked program was:
@@ -1786,7 +1786,7 @@ checked program was:
 "gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getipnodebyname’ [-Wimplicit-function-declaration]
-/tmp/ccge18tc.o: In function `t':
+/tmp/ccZu0FS7.o: In function `t':
 /home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `getipnodebyname'
 collect2: error: ld returned 1 exit status
 checked program was:

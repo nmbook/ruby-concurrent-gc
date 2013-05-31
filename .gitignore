@@ -4,4 +4,9 @@ config.*
 configure
 .cvsignore
 tags
+.ext/*
+*.swp
+.nfs*
+autom4te.cache/*
+insns_info.inc
 
