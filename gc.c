@@ -354,6 +354,7 @@ typedef struct mark_stack {
 
 struct cgc_shared_t {
     VALUE flags;
+    pid_t pid;
     size_t size;
     size_t cap;
     int shmid;
@@ -413,8 +414,7 @@ typedef struct rb_objspace {
 	size_t size;
 	double invoke_time;
     } profile;
-    struct cgc_shared_t *cgc_shared;
-    pid_t cgc_pid;
+    volatile struct cgc_shared_t *cgc_shared;
     struct gc_list *global_list;
     size_t count;
     int gc_stress;
@@ -1189,43 +1189,32 @@ signal_sigchld(int signal)
     unsigned int i;
     RVALUE *p;
     rb_objspace_t *objspace = &rb_objspace;
-    //puts("SIGCHLD");
-    if (waitpid(objspace->cgc_pid, NULL, 0) != objspace->cgc_pid) {
+    if (waitpid(objspace->cgc_shared->pid, NULL, 0) < 0) {
 	perror("waitpid");
 	exit(1);
     }
-    objspace->cgc_pid = 0;
+    objspace->cgc_shared->pid = 0;
     for (i = 0; i < objspace->cgc_shared->size; i++) {
 	p = objspace->cgc_shared->list[i];
 	add_freelist(&rb_objspace, p, FALSE);
     }
-    /* FIXME: read shared list
-    p = rb_objspace.cgc_shared->list[0];
-    for (; p != NULL; i++) {
-	add_freelist(&rb_objspace, p, FALSE);
-	p = rb_objspace.cgc_shared->list[i];
-    }*/
-    if (objspace->cgc_shared->flags & CGC_FL_HEAPS_INC) {
-	set_heaps_increment(objspace);
-	heaps_increment(objspace);
-    }
     if (objspace->cgc_shared->flags & CGC_FL_MALLOC_INC) {
 	malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
 	if (malloc_limit < initial_malloc_limit) malloc_limit = initial_malloc_limit;
+	objspace->cgc_shared->flags &= ~CGC_FL_MALLOC_INC;
     }
     //printf("MERGED %d FREE\n", i);
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
-    //puts("CHILD EXITED");
 }
 
 static void
 free_cgc_shared(rb_objspace_t *objspace)
 {
     int struct_id = objspace->cgc_shared->shmid;
-    void *struct_val = objspace->cgc_shared;
+    void *struct_val = (void *)objspace->cgc_shared;
     int list_id = objspace->cgc_shared->shmid_list;
-    void *list_val = objspace->cgc_shared->list;
+    void *list_val = (void *)objspace->cgc_shared->list;
     shmdt(list_val);
     shmctl(list_id, IPC_RMID, 0);
     shmdt(struct_val);
@@ -1345,7 +1334,7 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 	child_garbage_collect(objspace);
 	exit(0);
     } else {
-	objspace->cgc_pid = pid;
+	objspace->cgc_shared->pid = pid;
     }
 }
 
@@ -1371,7 +1360,7 @@ rb_newobj(void)
     }
 
     if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
-	/* merge reserve */
+	/* TODO: merge reserve */
     }
 
     if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
@@ -1393,6 +1382,12 @@ rb_newobj(void)
 		rb_memerror();
 	    }
 	}
+    }
+
+    if (objspace->cgc_shared->flags & CGC_FL_HEAPS_INC) {
+	set_heaps_increment(objspace);
+	heaps_increment(objspace);
+	objspace->cgc_shared->flags &= ~CGC_FL_HEAPS_INC;
     }
 
     obj = (VALUE)freelist;
@@ -2230,6 +2225,7 @@ add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector)
     if (is_collector) {
 	if (objspace->cgc_shared->size == objspace->cgc_shared->cap) {
 	    objspace->cgc_shared->flags |= CGC_FL_NO_SPACE;
+	    /* TODO: handle a full list */
 	} else {
 	    objspace->cgc_shared->list[objspace->cgc_shared->size] = p;
 	    objspace->cgc_shared->size++;
