@@ -1,7 +1,7 @@
 *.o
 Makefile
 config.*
-configure
+configure.in
 .cvsignore
 tags
 .ext/*
