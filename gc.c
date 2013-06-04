@@ -350,7 +350,7 @@ typedef struct mark_stack {
     size_t unused_cache_size;
 } mark_stack_t;
 
-#define SHARED_LIST_SIZE 1000
+#define SHARED_LIST_SIZE 100000
 
 struct cgc_shared_t {
     VALUE flags;
@@ -1192,8 +1192,8 @@ static int heaps_increment(rb_objspace_t *objspace);
 static void
 signal_sigchld(int signal)
 {
-    puts("SIGCHLD");
     rb_objspace_t *objspace = &rb_objspace;
+    printf("SIGCHLD pid = %d\n", objspace->cgc_shared->pid);
     if (waitpid(objspace->cgc_shared->pid, NULL, 0) < 0) {
 	perror("waitpid");
 	exit(1);
@@ -1338,6 +1338,28 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 
 #define RANY(o) ((RVALUE*)(o))
 
+static void
+cgc_handle_unprocessed(rb_objspace_t *objspace) {
+    unsigned int i;
+    RVALUE *p;
+
+    for (i = 0; i < objspace->cgc_shared->size; i++) {
+	p = objspace->cgc_shared->list[i];
+	add_freelist(&rb_objspace, p, FALSE);
+    }
+    if (objspace->cgc_shared->flags & CGC_FL_MALLOC_INC) {
+	malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
+	if (malloc_limit < initial_malloc_limit) malloc_limit = initial_malloc_limit;
+	objspace->cgc_shared->flags &= ~CGC_FL_MALLOC_INC;
+    }
+    if (objspace->cgc_shared->flags & CGC_FL_HEAPS_INC) {
+	set_heaps_increment(objspace);
+	heaps_increment(objspace);
+	objspace->cgc_shared->flags &= ~CGC_FL_HEAPS_INC;
+    }
+    objspace->cgc_unprocessed = FALSE;
+}
+
 VALUE
 rb_newobj(void)
 {
@@ -1358,24 +1380,7 @@ rb_newobj(void)
     }
 
     if (objspace->cgc_unprocessed) {
-	unsigned int i;
-	RVALUE *p;
-
-	for (i = 0; i < objspace->cgc_shared->size; i++) {
-	    p = objspace->cgc_shared->list[i];
-	    add_freelist(&rb_objspace, p, FALSE);
-	}
-	if (objspace->cgc_shared->flags & CGC_FL_MALLOC_INC) {
-	    malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
-	    if (malloc_limit < initial_malloc_limit) malloc_limit = initial_malloc_limit;
-	    objspace->cgc_shared->flags &= ~CGC_FL_MALLOC_INC;
-	}
-	if (objspace->cgc_shared->flags & CGC_FL_HEAPS_INC) {
-	    set_heaps_increment(objspace);
-	    heaps_increment(objspace);
-	    objspace->cgc_shared->flags &= ~CGC_FL_HEAPS_INC;
-	}
-	objspace->cgc_unprocessed = FALSE;
+	cgc_handle_unprocessed(objspace);
     }
 
     if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
@@ -1388,10 +1393,11 @@ rb_newobj(void)
 	while ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) != 0) {
 	    /* spin until signal */
 	}
-	//puts("signaled");
-	/* still empty? */
+	if (objspace->cgc_unprocessed) {
+	    cgc_handle_unprocessed(objspace);
+	}
 	if (UNLIKELY(!freelist)) {
-	    //puts("still empty!");
+	    puts("still empty!");
 	    set_heaps_increment(objspace);
 	    heaps_increment(objspace);
 	    /*if (!gc_lazy_sweep(objspace)) {
@@ -2236,6 +2242,9 @@ static inline void
 add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector)
 {
     if (is_collector) {
+	if (p->as.free.flags == 0) {
+	    return;
+	}
 	if (objspace->cgc_shared->size == objspace->cgc_shared->cap) {
 	    objspace->cgc_shared->flags |= CGC_FL_NO_SPACE;
 	    /* TODO: handle a full list */
@@ -2775,10 +2784,6 @@ gc_marks(rb_objspace_t *objspace, int is_collector)
 
     objspace->heap.live_num = 0;
     objspace->count++;
-
-    if (is_collector) {
-	mark_current_freelist(objspace, freelist);
-    }
 
     SET_STACK_END;
 
