@@ -1329,10 +1329,9 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 	perror("fork");
 	exit(1);
     } else if (pid == 0) {
+	objspace->cgc_shared->pid = getpid();
 	child_garbage_collect(objspace);
 	exit(0);
-    } else {
-	objspace->cgc_shared->pid = pid;
     }
 }
 
