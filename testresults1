@@ -1,0 +1,66 @@
+Branch: BASE
+
+Test: binarytrees
+Result: pid 10615 exit 0 (0.00832731 seconds)
+Test: binarytrees.jruby-3
+Result: pid 10618 exit 0 (0.008106531 seconds)
+Test: binarytreesredux
+Result: pid 10621 exit 0 (0.010612187 seconds)
+Test: chameneosredux
+./chameneosredux/chameneosredux.jruby:9:in `require': cannot load such file -- thread (LoadError)
+	from ./chameneosredux/chameneosredux.jruby:9:in `<main>'
+Result: pid 10624 exit 1 (0.005508186 seconds)
+Test: fannkuchredux
+./fannkuchredux/fannkuchredux.jruby:17:in `[]': no implicit conversion from nil to integer (TypeError)
+	from ./fannkuchredux/fannkuchredux.jruby:17:in `fannkuch'
+	from ./fannkuchredux/fannkuchredux.jruby:57:in `<main>'
+Result: pid 10627 exit 1 (0.005086571 seconds)
+Test: fasta
+Result: pid 10630 exit 0 (0.009998412 seconds)
+Excluded: knucleotide
+Excluded: knucleotide.jruby-2
+Excluded: knucleotide.jruby-3
+Test: mandelbrot.jruby-2
+Result: pid 10633 exit 0 (0.10355475 seconds)
+Test: mandelbrot.jruby-3
+Result: pid 10660 exit 0 (0.005305619 seconds)
+Test: meteor
+Result: pid 10663 exit 0 (8.166663857 seconds)
+Test: meteor.jruby-2
+Result: pid 10667 exit 0 (4.637716264 seconds)
+Test: nbody.jruby-2
+./nbody/nbody.jruby-2.jruby:127:in `Integer': can't convert nil into Integer (TypeError)
+	from ./nbody/nbody.jruby-2.jruby:127:in `<main>'
+Result: pid 10670 exit 1 (0.005646583 seconds)
+Test: pidigits
+./pidigits/pidigits.jruby:75:in `Integer': can't convert nil into Integer (TypeError)
+	from ./pidigits/pidigits.jruby:75:in `<main>'
+Result: pid 10673 exit 1 (0.005514041 seconds)
+Test: pidigits.jruby-3
+Result: pid 10676 exit 0 (0.013241058 seconds)
+Excluded: regexdna
+Excluded: regexdna.jruby-2
+Excluded: regexdna.jruby-3
+Excluded: regexdna.jruby-4
+Excluded: revcomp.jruby-2
+Test: spectralnorm
+./spectralnorm/spectralnorm.jruby:47:in `/': divided by 0 (ZeroDivisionError)
+	from ./spectralnorm/spectralnorm.jruby:47:in `<main>'
+Result: pid 10679 exit 1 (0.049389695 seconds)
+Test: spectralnorm.jruby-2
+./spectralnorm/spectralnorm.jruby-2.jruby:6:in `require': cannot load such file -- thread (LoadError)
+	from ./spectralnorm/spectralnorm.jruby-2.jruby:6:in `<main>'
+Result: pid 10682 exit 1 (0.017526872 seconds)
+Test: spectralnorm.jruby-4
+./spectralnorm/spectralnorm.jruby-4.jruby:63:in `/': divided by 0 (ZeroDivisionError)
+	from ./spectralnorm/spectralnorm.jruby-4.jruby:63:in `<main>'
+Result: pid 10685 exit 1 (0.018931205 seconds)
+Test: threadring
+./threadring/threadring.jruby:6:in `require': cannot load such file -- thread (LoadError)
+	from ./threadring/threadring.jruby:6:in `<main>'
+Result: pid 10688 exit 1 (0.005780478 seconds)
+Test: threadring.jruby-2
+./threadring/threadring.jruby-2.jruby:7:in `require': cannot load such file -- thread (LoadError)
+	from ./threadring/threadring.jruby-2.jruby:7:in `<main>'
+Result: pid 10691 exit 1 (0.008340824 seconds)
+
