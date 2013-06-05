@@ -1,6 +1,6 @@
 have_library: checking for t_open() in -lnsl... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘t_open’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -18,11 +18,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))t_open; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘t_open’ [-Wimplicit-function-declaration]
-/tmp/cc1CfsMU.o: In function `t':
-/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `t_open'
+/tmp/ccgxwPnT.o: In function `t':
+/home/nbook/ruby-concurrent-gc/ext/socket/conftest.c:9: undefined reference to `t_open'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -41,7 +41,7 @@ checked program was:
 
 have_library: checking for socket() in -lsocket... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘socket’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -59,7 +59,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘socket’ [-Wimplicit-function-declaration]
 /usr/bin/ld: cannot find -lsocket
@@ -81,7 +81,7 @@ checked program was:
 
 have_header: checking for arpa/inet.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -93,7 +93,7 @@ checked program was:
 
 checking for ipv6... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘main’:
 conftest.c:11:1: warning: control reaches end of non-void function [-Wreturn-type]
 checked program was:
@@ -117,7 +117,7 @@ checking for ipv6 type... -------------------- unknown
 
 have_macro: checking for IPV6_INRIA_VERSION in netinet/in.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:3: error: #error 
 conftest.c:7:1: error: expected identifier or ‘(’ before ‘>>’ token
 checked program was:
@@ -136,7 +136,7 @@ checked program was:
 
 have_macro: checking for __KAME__ in netinet/in.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:3: error: #error 
 conftest.c:7:1: error: expected identifier or ‘(’ before ‘>>’ token
 checked program was:
@@ -155,7 +155,7 @@ checked program was:
 
 have_macro: checking for _TOSHIBA_INET6 in sys/param.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:3: error: #error 
 conftest.c:7:1: error: expected identifier or ‘(’ before ‘>>’ token
 checked program was:
@@ -174,7 +174,7 @@ checked program was:
 
 have_macro: checking for __V6D__ in sys/v6config.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:26: fatal error: sys/v6config.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -193,7 +193,7 @@ checked program was:
 
 have_macro: checking for _ZETA_MINAMI_INET6 in sys/param.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:3: error: #error 
 conftest.c:7:1: error: expected identifier or ‘(’ before ‘>>’ token
 checked program was:
@@ -212,7 +212,7 @@ checked program was:
 
 have_library: checking for main() in -linet6... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -linet6  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -linet6  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 /usr/bin/ld: cannot find -linet6
@@ -230,7 +230,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -linet6  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -linet6  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: error: too few arguments to function ‘main’
 conftest.c:4:5: note: declared here
@@ -253,7 +253,7 @@ checked program was:
 
 have_struct_member: checking for struct sockaddr_in.sin_len in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:11:42: error: ‘struct sockaddr_in’ has no member named ‘sin_len’
 checked program was:
 /* begin */
@@ -282,7 +282,7 @@ checked program was:
 
 have_struct_member: checking for struct sockaddr_storage.ss_family in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -310,7 +310,7 @@ checked program was:
 
 have_struct_member: checking for struct sockaddr_storage.ss_len in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:11:47: error: ‘struct sockaddr_storage’ has no member named ‘ss_len’
 checked program was:
 /* begin */
@@ -339,7 +339,7 @@ checked program was:
 
 have_struct_member: checking for struct sockaddr_storage.ss_len in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64  -Dss_len=__ss_len  -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.    -Dss_len=__ss_len  -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:11:47: error: ‘struct sockaddr_storage’ has no member named ‘__ss_len’
 checked program was:
 /* begin */
@@ -368,7 +368,7 @@ checked program was:
 
 have_struct_member: checking for struct sockaddr.sa_len in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:11:39: error: ‘struct sockaddr’ has no member named ‘sa_len’
 checked program was:
 /* begin */
@@ -397,7 +397,7 @@ checked program was:
 
 have_header: checking for netinet/tcp.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -409,7 +409,7 @@ checked program was:
 
 have_header: checking for netinet/udp.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -421,7 +421,7 @@ checked program was:
 
 have_macro: checking for IPPROTO_IPV6 in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -443,7 +443,7 @@ checked program was:
 
 have_func: checking for sendmsg()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘sendmsg’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -461,7 +461,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))sendmsg; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘sendmsg’ [-Wimplicit-function-declaration]
 checked program was:
@@ -481,7 +481,7 @@ checked program was:
 
 have_func: checking for recvmsg()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘recvmsg’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -499,7 +499,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))recvmsg; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘recvmsg’ [-Wimplicit-function-declaration]
 checked program was:
@@ -519,7 +519,7 @@ checked program was:
 
 have_struct_member: checking for struct msghdr.msg_control in sys/types.h,sys/socket.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -543,7 +543,7 @@ checked program was:
 
 have_struct_member: checking for struct msghdr.msg_accrights in sys/types.h,sys/socket.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:7:37: error: ‘struct msghdr’ has no member named ‘msg_accrights’
 checked program was:
 /* begin */
@@ -568,7 +568,7 @@ checked program was:
 
 checking for recvmsg() with MSG_PEEK allocate file descriptors... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
   1: #include "ruby.h"
@@ -704,7 +704,7 @@ checked program was:
 
 checking for wide getaddrinfo... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 checked program was:
 /* begin */
   1: #include "ruby.h"
@@ -828,7 +828,7 @@ checked program was:
 
 have_type: checking for struct addrinfo in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -849,7 +849,7 @@ checked program was:
 
 have_func: checking for freehostent()... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘freehostent’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -867,11 +867,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))freehostent; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘freehostent’ [-Wimplicit-function-declaration]
-/tmp/ccCfrzOS.o: In function `t':
-/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `freehostent'
+/tmp/ccv7R2WL.o: In function `t':
+/home/nbook/ruby-concurrent-gc/ext/socket/conftest.c:9: undefined reference to `freehostent'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -890,7 +890,7 @@ checked program was:
 
 have_func: checking for freeaddrinfo()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘freeaddrinfo’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -908,7 +908,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))freeaddrinfo; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘freeaddrinfo’ [-Wimplicit-function-declaration]
 checked program was:
@@ -928,7 +928,7 @@ checked program was:
 
 have_func: checking for gai_strerror()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘gai_strerror’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -946,7 +946,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))gai_strerror; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘gai_strerror’ [-Wimplicit-function-declaration]
 checked program was:
@@ -966,7 +966,7 @@ checked program was:
 
 checking for gai_strerror() returns const pointer... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c: In function ‘conftest_gai_strerror_is_const’:
 conftest.c:14:5: error: assignment of read-only location ‘*gai_strerror(0)’
 checked program was:
@@ -992,7 +992,7 @@ checked program was:
 
 have_func: checking for getnameinfo() in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:16:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -1019,7 +1019,7 @@ checked program was:
 
 have_func: checking for getaddrinfo() in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:16:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -1046,7 +1046,7 @@ checked program was:
 
 have_func: checking for inet_ntop()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘inet_ntop’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1064,7 +1064,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))inet_ntop; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘inet_ntop’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1084,7 +1084,7 @@ checked program was:
 
 have_func: checking for inet_pton()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘inet_pton’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1102,7 +1102,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))inet_pton; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘inet_pton’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1122,7 +1122,7 @@ checked program was:
 
 have_func: checking for getservbyport()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘getservbyport’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1140,7 +1140,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))getservbyport; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getservbyport’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1160,7 +1160,7 @@ checked program was:
 
 have_header: checking for arpa/nameser.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1172,7 +1172,7 @@ checked program was:
 
 have_header: checking for resolv.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1184,7 +1184,7 @@ checked program was:
 
 have_header: checking for ifaddrs.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1196,7 +1196,7 @@ checked program was:
 
 have_func: checking for getifaddrs()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘getifaddrs’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1214,7 +1214,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))getifaddrs; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getifaddrs’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1234,7 +1234,7 @@ checked program was:
 
 have_header: checking for sys/ioctl.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1246,7 +1246,7 @@ checked program was:
 
 have_header: checking for sys/sockio.h... -------------------- no
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 conftest.c:3:24: fatal error: sys/sockio.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -1260,7 +1260,7 @@ checked program was:
 
 have_header: checking for net/if.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1278,7 +1278,7 @@ checked program was:
 
 have_header: checking for sys/param.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1296,7 +1296,7 @@ checked program was:
 
 have_header: checking for sys/ucred.h... -------------------- no
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 conftest.c:9:23: fatal error: sys/ucred.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -1316,7 +1316,7 @@ checked program was:
 
 have_type: checking for socklen_t in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1337,7 +1337,7 @@ checked program was:
 
 have_header: checking for sys/un.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1349,7 +1349,7 @@ checked program was:
 
 have_header: checking for sys/uio.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -1361,7 +1361,7 @@ checked program was:
 
 have_type: checking for struct in_pktinfo in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1386,7 +1386,7 @@ checked program was:
 
 have_struct_member: checking for struct in_pktinfo.ipi_spec_dst in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1414,7 +1414,7 @@ checked program was:
 
 have_type: checking for struct in6_pktinfo in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1439,7 +1439,7 @@ checked program was:
 
 have_type: checking for struct sockcred in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:12:24: error: invalid application of ‘sizeof’ to incomplete type ‘conftest_type’
 checked program was:
 /* begin */
@@ -1461,7 +1461,7 @@ checked program was:
 
 have_type: checking for struct cmsgcred in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- no
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:12:24: error: invalid application of ‘sizeof’ to incomplete type ‘conftest_type’
 checked program was:
 /* begin */
@@ -1483,7 +1483,7 @@ checked program was:
 
 have_func: checking for getpeereid()... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘getpeereid’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1501,11 +1501,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))getpeereid; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getpeereid’ [-Wimplicit-function-declaration]
-/tmp/ccJ0Uo8M.o: In function `t':
-/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `getpeereid'
+/tmp/cc1UVphq.o: In function `t':
+/home/nbook/ruby-concurrent-gc/ext/socket/conftest.c:9: undefined reference to `getpeereid'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -1524,7 +1524,7 @@ checked program was:
 
 have_header: checking for ucred.h... -------------------- no
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 conftest.c:9:19: fatal error: ucred.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -1544,7 +1544,7 @@ checked program was:
 
 have_func: checking for getpeerucred()... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘getpeerucred’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1562,11 +1562,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))getpeerucred; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getpeerucred’ [-Wimplicit-function-declaration]
-/tmp/cc0FXbUa.o: In function `t':
-/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `getpeerucred'
+/tmp/ccjWwijy.o: In function `t':
+/home/nbook/ruby-concurrent-gc/ext/socket/conftest.c:9: undefined reference to `getpeerucred'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -1585,7 +1585,7 @@ checked program was:
 
 have_func: checking for if_indextoname()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘if_indextoname’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1603,7 +1603,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))if_indextoname; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘if_indextoname’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1623,7 +1623,7 @@ checked program was:
 
 have_type: checking for struct ip_mreq in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1644,7 +1644,7 @@ checked program was:
 
 have_type: checking for struct ip_mreqn in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1665,7 +1665,7 @@ checked program was:
 
 have_type: checking for struct ipv6_mreq in sys/types.h,netdb.h,string.h,sys/socket.h,netinet/in.h,arpa/inet.h... -------------------- yes
 
-"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
  1: #include "ruby.h"
@@ -1686,7 +1686,7 @@ checked program was:
 
 have_func: checking for socket()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘socket’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1704,7 +1704,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘socket’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1724,7 +1724,7 @@ checked program was:
 
 have_func: checking for hsterror()... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘hsterror’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1742,11 +1742,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))hsterror; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘hsterror’ [-Wimplicit-function-declaration]
-/tmp/ccbtTJPR.o: In function `t':
-/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `hsterror'
+/tmp/ccV0ceu9.o: In function `t':
+/home/nbook/ruby-concurrent-gc/ext/socket/conftest.c:9: undefined reference to `hsterror'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -1765,7 +1765,7 @@ checked program was:
 
 have_func: checking for getipnodebyname()... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘getipnodebyname’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1783,11 +1783,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))getipnodebyname; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘getipnodebyname’ [-Wimplicit-function-declaration]
-/tmp/ccge18tc.o: In function `t':
-/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/socket/conftest.c:9: undefined reference to `getipnodebyname'
+/tmp/ccE0tuq7.o: In function `t':
+/home/nbook/ruby-concurrent-gc/ext/socket/conftest.c:9: undefined reference to `getipnodebyname'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -1806,7 +1806,7 @@ checked program was:
 
 have_func: checking for gethostbyname2()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘gethostbyname2’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1824,7 +1824,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))gethostbyname2; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘gethostbyname2’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1844,7 +1844,7 @@ checked program was:
 
 have_func: checking for socketpair()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘socketpair’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1862,7 +1862,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))socketpair; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘socketpair’ [-Wimplicit-function-declaration]
 checked program was:
@@ -1882,7 +1882,7 @@ checked program was:
 
 have_func: checking for gethostname()... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘gethostname’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -1900,7 +1900,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))gethostname; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/socket -I../.. -I../../.  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/socket -I../.. -I../../.     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘gethostname’ [-Wimplicit-function-declaration]
 checked program was:

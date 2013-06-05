@@ -6,7 +6,7 @@ module RbConfig
   RUBY_VERSION == "1.9.3" or
     raise "ruby lib version (1.9.3) doesn't match executable version (#{RUBY_VERSION})"
 
-  TOPDIR = File.dirname(__FILE__).chomp!("/lib/ruby/1.9.1/i686-linux")
+  TOPDIR = File.dirname(__FILE__).chomp!("/lib/ruby/1.9.1/x86_64-linux")
   DESTDIR = '' unless defined? DESTDIR
   CONFIG = {}
   CONFIG["DESTDIR"] = DESTDIR
@@ -37,7 +37,7 @@ module RbConfig
   CONFIG["sitedir"] = "$(rubylibprefix)/site_ruby"
   CONFIG["ruby_version"] = "1.9.1"
   CONFIG["sitearch"] = "$(arch)"
-  CONFIG["arch"] = "i686-linux"
+  CONFIG["arch"] = "x86_64-linux"
   CONFIG["RI_BASE_NAME"] = "ri"
   CONFIG["ridir"] = "$(datarootdir)/$(RI_BASE_NAME)"
   CONFIG["rubylibprefix"] = "$(libdir)/$(RUBY_BASE_NAME)"
@@ -142,19 +142,19 @@ module RbConfig
   CONFIG["CFLAGS"] = "$(cflags)"
   CONFIG["CC"] = "gcc"
   CONFIG["target_os"] = "linux"
-  CONFIG["target_vendor"] = "pc"
-  CONFIG["target_cpu"] = "i686"
-  CONFIG["target"] = "i686-pc-linux-gnu"
+  CONFIG["target_vendor"] = "unknown"
+  CONFIG["target_cpu"] = "x86_64"
+  CONFIG["target"] = "x86_64-unknown-linux-gnu"
   CONFIG["host_os"] = "linux-gnu"
-  CONFIG["host_vendor"] = "pc"
-  CONFIG["host_cpu"] = "i686"
-  CONFIG["host"] = "i686-pc-linux-gnu"
+  CONFIG["host_vendor"] = "unknown"
+  CONFIG["host_cpu"] = "x86_64"
+  CONFIG["host"] = "x86_64-unknown-linux-gnu"
   CONFIG["RUBYW_BASE_NAME"] = "rubyw"
   CONFIG["RUBY_BASE_NAME"] = "ruby"
   CONFIG["build_os"] = "linux-gnu"
-  CONFIG["build_vendor"] = "pc"
-  CONFIG["build_cpu"] = "i686"
-  CONFIG["build"] = "i686-pc-linux-gnu"
+  CONFIG["build_vendor"] = "unknown"
+  CONFIG["build_cpu"] = "x86_64"
+  CONFIG["build"] = "x86_64-unknown-linux-gnu"
   CONFIG["RUBY_RELEASE_DATE"] = "2013-05-15"
   CONFIG["RUBY_PROGRAM_VERSION"] = "1.9.3"
   CONFIG["BASERUBY"] = "ruby"
@@ -165,7 +165,7 @@ module RbConfig
   CONFIG["ECHO_T"] = ""
   CONFIG["ECHO_N"] = "-n"
   CONFIG["ECHO_C"] = ""
-  CONFIG["DEFS"] = "-D_FILE_OFFSET_BITS=64"
+  CONFIG["DEFS"] = ""
   CONFIG["mandir"] = "$(datarootdir)/man"
   CONFIG["localedir"] = "$(datarootdir)/locale"
   CONFIG["libdir"] = "$(exec_prefix)/lib"

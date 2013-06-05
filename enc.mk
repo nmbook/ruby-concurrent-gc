@@ -12,7 +12,7 @@ exec_prefix = $(prefix)
 libdir = $(exec_prefix)/lib
 top_srcdir = $(encsrcdir:/enc=)
 srcdir = $(top_srcdir)
-arch = i686-linux
+arch = x86_64-linux
 EXTOUT = .ext
 hdrdir = $(srcdir)/include
 arch_hdrdir = $(EXTOUT)/include/$(arch)
@@ -42,7 +42,7 @@ debugflags = -ggdb
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration
 CCDLFLAGS = -fPIC
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir) -I$(top_srcdir)
-DEFS = -D_FILE_OFFSET_BITS=64
+DEFS = 
 CPPFLAGS =  $(DEFS) $(cppflags) -DONIG_ENC_REGISTER=rb_enc_register
 LDFLAGS = -L.  -rdynamic -Wl,-export-dynamic
 LDSHARED = $(CC) -shared

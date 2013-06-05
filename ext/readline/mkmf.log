@@ -1,6 +1,6 @@
-have_library: checking for tgetnum() in -lncurses... -------------------- yes
+have_library: checking for tgetnum() in -lncurses... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/readline  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lncurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lncurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘tgetnum’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -18,9 +18,91 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/readline  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lncurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lncurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘tgetnum’ [-Wimplicit-function-declaration]
+/usr/bin/ld: cannot find -lncurses
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { tgetnum(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for tgetnum() in -ltermcap... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ltermcap  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘tgetnum’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ltermcap  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘tgetnum’ [-Wimplicit-function-declaration]
+/usr/bin/ld: cannot find -ltermcap
+collect2: error: ld returned 1 exit status
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { tgetnum(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for tgetnum() in -lcurses... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:57: error: ‘tgetnum’ undeclared (first use in this function)
+conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(int argc, char **argv)
+5: {
+6:   return 0;
+7: }
+8: extern int t(void);
+9: int t(void) { void ((*volatile p)()); p = (void ((*)()))tgetnum; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcurses  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:9:1: warning: implicit declaration of function ‘tgetnum’ [-Wimplicit-function-declaration]
+/usr/bin/ld: cannot find -lcurses
+collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -38,7 +120,7 @@ checked program was:
 
 have_header: checking for readline/readline.h... -------------------- no
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/readline  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 conftest.c:3:31: fatal error: readline/readline.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -52,7 +134,7 @@ checked program was:
 
 have_header: checking for editline/readline.h... -------------------- no
 
-"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/readline  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/readline     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 conftest.c:3:31: fatal error: editline/readline.h: No such file or directory
 compilation terminated.
 checked program was:

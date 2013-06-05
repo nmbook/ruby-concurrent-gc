@@ -1,4 +1,4 @@
-arch=i686-linux
+arch=x86_64-linux
 sitearch=${arch}
 prefix=/usr/local
 exec_prefix=${prefix}

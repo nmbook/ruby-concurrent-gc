@@ -1,6 +1,6 @@
 have_library: checking for gdbm_open() in -lgdbm... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/gdbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/gdbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘gdbm_open’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -18,7 +18,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))gdbm_open; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/gdbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/gdbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘gdbm_open’ [-Wimplicit-function-declaration]
 /usr/bin/ld: cannot find -lgdbm

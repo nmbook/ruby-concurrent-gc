@@ -1,4 +1,4 @@
-"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/wait  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/wait     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:3: error: #error 
 conftest.c:7:1: error: expected identifier or ‘(’ before ‘>>’ token
 checked program was:
@@ -15,7 +15,7 @@ checked program was:
 
 have_header: checking for sys/ioctl.h... -------------------- yes
 
-"gcc -E -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/wait  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/wait     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -27,7 +27,7 @@ checked program was:
 
 have_macro: checking for FIONREAD in sys/ioctl.h,sys/ioctl.h... -------------------- yes
 
-"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/wait  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/wait     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"

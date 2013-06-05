@@ -1,0 +1,15 @@
+"gcc -o conftest -I/include/x86_64-linux -I/home/nbook/ruby-concurrent-gc/include/ruby/backward -I/home/nbook/ruby-concurrent-gc/include -Iiconv     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+In file included from /home/nbook/ruby-concurrent-gc/include/ruby.h:32:0,
+                 from conftest.c:1:
+/home/nbook/ruby-concurrent-gc/include/ruby/ruby.h:24:25: fatal error: ruby/config.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
