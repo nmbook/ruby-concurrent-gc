@@ -1,6 +1,6 @@
 have_library: checking for deflateReset() in -lz... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/zlib     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/zlib  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘deflateReset’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -18,7 +18,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))deflateReset; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/zlib     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/zlib  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘deflateReset’ [-Wimplicit-function-declaration]
 checked program was:
@@ -38,7 +38,7 @@ checked program was:
 
 have_header: checking for zlib.h... -------------------- yes
 
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/zlib     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/zlib  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -50,7 +50,7 @@ checked program was:
 
 have_func: checking for crc32_combine() in zlib.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/zlib     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lz  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/zlib  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lz  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -72,7 +72,7 @@ checked program was:
 
 have_func: checking for adler32_combine() in zlib.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/zlib     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lz  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/zlib  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lz  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lz  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -92,9 +92,10 @@ checked program was:
 
 --------------------
 
-have_type: checking for z_crc_t in zlib.h... -------------------- yes
+have_type: checking for z_crc_t in zlib.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/zlib     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/zlib  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:6:1: error: unknown type name ‘z_crc_t’
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -115,7 +116,6 @@ extconf.h is:
 3: #define HAVE_ZLIB_H 1
 4: #define HAVE_CRC32_COMBINE 1
 5: #define HAVE_ADLER32_COMBINE 1
-6: #define HAVE_TYPE_Z_CRC_T 1
-7: #endif
+6: #endif
 /* end */
 

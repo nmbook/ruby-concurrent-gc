@@ -1,7 +1,7 @@
 package configuration for openssl is not found
 have_library: checking for main() in -lcrypto... -------------------- no
 
-"gcc -o conftest -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/..     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcrypto  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcrypto  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 /usr/bin/ld: cannot find -lcrypto
@@ -19,7 +19,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
 /* end */
 
-"gcc -o conftest -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/..     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcrypto  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lcrypto  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: error: too few arguments to function ‘main’
 conftest.c:4:5: note: declared here
@@ -40,7 +40,7 @@ checked program was:
 
 have_header: checking for sys/cdefs.h... -------------------- yes
 
-"gcc -E -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/..     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/digest/sha1 -I../../.././ext/digest/sha1/..  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"

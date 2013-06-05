@@ -1,4 +1,4 @@
-"gcc -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/console     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/console  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:5:3: error: #error 
 conftest.c:6:1: error: expected identifier or ‘(’ before ‘>>’ token
 checked program was:
@@ -14,7 +14,7 @@ checked program was:
 
 have_header: checking for termios.h... -------------------- yes
 
-"gcc -E -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/console     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/console  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -26,7 +26,7 @@ checked program was:
 
 have_func: checking for cfmakeraw() in termios.h... -------------------- yes
 
-"gcc -o conftest -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/console     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/console  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -48,7 +48,7 @@ checked program was:
 
 have_header: checking for sys/ioctl.h... -------------------- yes
 
-"gcc -E -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/console     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+"gcc -E -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/console  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -60,7 +60,7 @@ checked program was:
 
 have_func: checking for rb_io_get_write_io() in ruby/io.h... -------------------- yes
 
-"gcc -o conftest -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/console     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/console  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -82,7 +82,7 @@ checked program was:
 
 have_func: checking for dup3() in unistd.h... -------------------- yes
 
-"gcc -o conftest -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/console     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/console  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:

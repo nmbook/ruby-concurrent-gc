@@ -1,6 +1,6 @@
 have_macro: checking for O_NONBLOCK in fcntl.h... -------------------- yes
 
-"gcc -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/nonblock     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/nonblock  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -17,7 +17,7 @@ checked program was:
 
 have_macro: checking for F_GETFL in fcntl.h... -------------------- yes
 
-"gcc -I../../../.ext/include/x86_64-linux -I../../.././include -I../../.././ext/io/nonblock     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../../.ext/include/i686-linux -I../../.././include -I../../.././ext/io/nonblock  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"

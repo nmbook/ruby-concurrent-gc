@@ -1,4 +1,4 @@
-U:RDoc::AnyMethod[iI"strftime:ETI"DateTime#strftime;TF:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Verbatim;	[ªI"BFormats date according to the directives in the given format
+U:RDoc::AnyMethod[iI"strftime:ETI"DateTime#strftime;TF:privateo:RDoc::Markup::Document:@parts[o:RDoc::Markup::Verbatim;	[ªI"BFormats date according to the directives in the given format
 ;FI"string.
 ;FI"9The directives begins with a percent (%) character.
 ;FI"FAny text not listed as a directive will be passed through to the

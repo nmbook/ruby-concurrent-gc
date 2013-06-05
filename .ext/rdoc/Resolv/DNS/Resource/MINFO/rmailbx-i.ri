@@ -1,2 +1,2 @@
-U:RDoc::Attr[iI"rmailbx:EFI")Resolv::DNS::Resource::MINFO#rmailbx;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I";Domain name responsible for this mail list or mailbox.;T:
+U:RDoc::Attr[iI"rmailbx:EFI")Resolv::DNS::Resource::MINFO#rmailbx;FI"R;F:privateo:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I";Domain name responsible for this mail list or mailbox.;T:
 @file0FI"lib/resolv.rb;T

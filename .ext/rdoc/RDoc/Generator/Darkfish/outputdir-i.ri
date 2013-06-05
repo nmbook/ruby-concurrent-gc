@@ -1,2 +1,2 @@
-U:RDoc::Attr[iI"outputdir:EFI"(RDoc::Generator::Darkfish#outputdir;FI"R;F:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"The output directory;T:
+U:RDoc::Attr[iI"outputdir:EFI"(RDoc::Generator::Darkfish#outputdir;FI"R;F:privateo:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"The output directory;T:
 @file0FI"#lib/rdoc/generator/darkfish.rb;T

@@ -1,6 +1,6 @@
 have_type: checking for DBM in ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:18: fatal error: ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -18,7 +18,7 @@ checked program was:
 
 have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:16: fatal error: db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -36,7 +36,7 @@ checked program was:
 
 have_type: checking for DBM in db2/db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:20: fatal error: db2/db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -54,7 +54,7 @@ checked program was:
 
 have_type: checking for DBM in db2.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:17: fatal error: db2.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -72,7 +72,7 @@ checked program was:
 
 have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:16: fatal error: db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -90,7 +90,7 @@ checked program was:
 
 have_type: checking for DBM in db1/ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:22: fatal error: db1/ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -108,7 +108,7 @@ checked program was:
 
 have_type: checking for DBM in db1.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:17: fatal error: db1.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -126,7 +126,7 @@ checked program was:
 
 have_type: checking for DBM in ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:18: fatal error: ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -144,7 +144,7 @@ checked program was:
 
 have_type: checking for DBM in db5/db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:20: fatal error: db5/db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -162,7 +162,7 @@ checked program was:
 
 have_type: checking for DBM in db5.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:17: fatal error: db5.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -180,7 +180,7 @@ checked program was:
 
 have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:16: fatal error: db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -198,7 +198,7 @@ checked program was:
 
 have_type: checking for DBM in db4/db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:20: fatal error: db4/db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -216,7 +216,7 @@ checked program was:
 
 have_type: checking for DBM in db4.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:17: fatal error: db4.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -234,7 +234,7 @@ checked program was:
 
 have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:16: fatal error: db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -252,7 +252,7 @@ checked program was:
 
 have_type: checking for DBM in db3/db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:20: fatal error: db3/db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -270,7 +270,7 @@ checked program was:
 
 have_type: checking for DBM in db3.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:17: fatal error: db3.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -288,7 +288,7 @@ checked program was:
 
 have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
 conftest.c:3:16: fatal error: db.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -306,7 +306,7 @@ checked program was:
 
 have_type: checking for DBM in ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:18: fatal error: ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -324,7 +324,7 @@ checked program was:
 
 have_type: checking for DBM in gdbm-ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:23: fatal error: gdbm-ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -342,7 +342,7 @@ checked program was:
 
 have_type: checking for DBM in ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:18: fatal error: ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -360,7 +360,7 @@ checked program was:
 
 have_type: checking for DBM in gdbm/ndbm.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:23: fatal error: gdbm/ndbm.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -378,7 +378,7 @@ checked program was:
 
 have_library: checking for main() in -lgdbm... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 /usr/bin/ld: cannot find -lgdbm
@@ -396,7 +396,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: error: too few arguments to function ‘main’
 conftest.c:4:5: note: declared here
@@ -417,7 +417,7 @@ checked program was:
 
 have_library: checking for main() in -lgdbm... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 /usr/bin/ld: cannot find -lgdbm
@@ -435,7 +435,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: error: too few arguments to function ‘main’
 conftest.c:4:5: note: declared here
@@ -456,7 +456,7 @@ checked program was:
 
 have_library: checking for main() in -lgdbm... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 /usr/bin/ld: cannot find -lgdbm
@@ -474,7 +474,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: error: too few arguments to function ‘main’
 conftest.c:4:5: note: declared here
@@ -495,7 +495,7 @@ checked program was:
 
 have_type: checking for DBM in relic.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:19: fatal error: relic.h: No such file or directory
 compilation terminated.
 checked program was:
@@ -513,7 +513,7 @@ checked program was:
 
 have_type: checking for DBM in qdbm/relic.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/dbm     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:3:24: fatal error: qdbm/relic.h: No such file or directory
 compilation terminated.
 checked program was:

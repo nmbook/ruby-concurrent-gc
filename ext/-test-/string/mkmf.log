@@ -2,7 +2,7 @@ extconf.h is:
 /* begin */
 1: #ifndef EXTCONF_H
 2: #define EXTCONF_H
-3: #define TEST_INIT_FUNCS(X) X(enc_associate) X(modify) X(cstr) X(ellipsize) X(set_len)
+3: #define TEST_INIT_FUNCS(X) X(enc_associate) X(set_len) X(cstr) X(ellipsize) X(modify)
 4: #endif
 /* end */
 

@@ -1,6 +1,6 @@
 have_func: checking for ruby_native_thread_p() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -22,7 +22,7 @@ checked program was:
 
 have_func: checking for rb_errinfo() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -44,7 +44,7 @@ checked program was:
 
 have_func: checking for rb_safe_level() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -66,7 +66,7 @@ checked program was:
 
 have_func: checking for rb_hash_lookup() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -88,7 +88,7 @@ checked program was:
 
 have_func: checking for rb_proc_new() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -110,7 +110,7 @@ checked program was:
 
 have_func: checking for rb_obj_untrust() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -132,7 +132,7 @@ checked program was:
 
 have_func: checking for rb_obj_taint() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -154,7 +154,7 @@ checked program was:
 
 have_func: checking for rb_set_safe_level_force() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -176,7 +176,7 @@ checked program was:
 
 have_func: checking for rb_sourcefile() in ruby.h... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -198,7 +198,7 @@ checked program was:
 
 have_struct_member: checking for struct RArray.ptr in ruby.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:37: error: ‘struct RArray’ has no member named ‘ptr’
 checked program was:
 /* begin */
@@ -222,7 +222,7 @@ checked program was:
 
 have_struct_member: checking for struct RArray.len in ruby.h... -------------------- no
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 conftest.c:6:37: error: ‘struct RArray’ has no member named ‘len’
 checked program was:
 /* begin */
@@ -246,7 +246,7 @@ checked program was:
 
 have_library: checking for t_open() in -lnsl... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘t_open’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -264,11 +264,11 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))t_open; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lnsl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘t_open’ [-Wimplicit-function-declaration]
-/tmp/ccQlXz5o.o: In function `t':
-/home/nbook/ruby-concurrent-gc/ext/tk/conftest.c:9: undefined reference to `t_open'
+/tmp/ccIQhOoa.o: In function `t':
+/home/vax7/u40/nbook/ruby-1.9.3-p429/ext/tk/conftest.c:9: undefined reference to `t_open'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
@@ -287,7 +287,7 @@ checked program was:
 
 have_library: checking for socket() in -lsocket... -------------------- no
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘socket’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -305,7 +305,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))socket; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lsocket  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘socket’ [-Wimplicit-function-declaration]
 /usr/bin/ld: cannot find -lsocket
@@ -327,7 +327,7 @@ checked program was:
 
 have_library: checking for dlopen() in -ldl... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘dlopen’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -345,7 +345,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))dlopen; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘dlopen’ [-Wimplicit-function-declaration]
 checked program was:
@@ -365,7 +365,7 @@ checked program was:
 
 have_library: checking for log() in -lm... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
 checked program was:
@@ -385,7 +385,7 @@ checked program was:
 
 --------------------
 
-"gcc -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -398,9 +398,83 @@ checked program was:
 8: #endif
 /* end */
 
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk -I/usr/include  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -L/usr/lib -Wl,-R/usr/lib -ltcl8.5 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <tcl.h>
+ 4: 
+ 5: /*top*/
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   return 0;
+ 9: }
+10: extern int t(void);
+11: int t(void) { void ((*volatile p)()); p = (void ((*)()))Tcl_FindExecutable; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk -I/usr/include  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -L/usr/lib -Wl,-R/usr/lib -ltk8.5  -L/usr/lib -Wl,-R/usr/lib -ltcl8.5 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:12:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <tcl.h>
+ 4: #include <tk.h>
+ 5: 
+ 6: /*top*/
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   return 0;
+10: }
+11: extern int t(void);
+12: int t(void) { void ((*volatile p)()); p = (void ((*)()))Tk_Init; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk -I/usr/include  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L/lib -Wl,-R/lib -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -L/lib -Wl,-R/lib -ltcl8.5 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:11:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <tcl.h>
+ 4: 
+ 5: /*top*/
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   return 0;
+ 9: }
+10: extern int t(void);
+11: int t(void) { void ((*volatile p)()); p = (void ((*)()))Tcl_FindExecutable; return 0; }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk -I/usr/include  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L/lib -Wl,-R/lib -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -L/lib -Wl,-R/lib -ltk8.5  -L/lib -Wl,-R/lib -ltcl8.5 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:12:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <tcl.h>
+ 4: #include <tk.h>
+ 5: 
+ 6: /*top*/
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   return 0;
+10: }
+11: extern int t(void);
+12: int t(void) { void ((*volatile p)()); p = (void ((*)()))Tk_Init; return 0; }
+/* end */
+
 find_library: checking for XOpenDisplay() in -lX11... -------------------- yes
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lX11 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lX11 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:57: error: ‘XOpenDisplay’ undeclared (first use in this function)
 conftest.c:9:57: note: each undeclared identifier is reported only once for each function it appears in
@@ -418,7 +492,7 @@ checked program was:
 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))XOpenDisplay; return 0; }
 /* end */
 
-"gcc -o conftest -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lX11 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/tk  -D_FILE_OFFSET_BITS=64   -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L/usr/lib -Wl,-R/usr/lib -L.  -rdynamic -Wl,-export-dynamic    -lm -ldl  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lX11 -lm -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
 conftest.c: In function ‘t’:
 conftest.c:9:1: warning: implicit declaration of function ‘XOpenDisplay’ [-Wimplicit-function-declaration]
 checked program was:
@@ -436,158 +510,53 @@ checked program was:
 
 --------------------
 
-have_header: checking for tcl.h... -------------------- no
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
+extconf.h is:
 /* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
+ 1: #ifndef EXTCONF_H
+ 2: #define EXTCONF_H
+ 3: #define HAVE_RUBY_NATIVE_THREAD_P 1
+ 4: #define HAVE_RB_ERRINFO 1
+ 5: #define HAVE_RB_SAFE_LEVEL 1
+ 6: #define HAVE_RB_HASH_LOOKUP 1
+ 7: #define HAVE_RB_PROC_NEW 1
+ 8: #define HAVE_RB_OBJ_UNTRUST 1
+ 9: #define HAVE_RB_OBJ_TAINT 1
+10: #define HAVE_RB_SET_SAFE_LEVEL_FORCE 1
+11: #define HAVE_RB_SOURCEFILE 1
+12: #define PACKAGE_VERSION "8.5"
+13: #define PACKAGE_BUGREPORT ""
+14: #define PACKAGE_URL ""
+15: #define TCL_CFGVAL_ENCODING "iso8859-1"
+16: #define MODULE_SCOPE extern __attribute__((__visibility__("hidden")))
+17: #define TCL_SHLIB_EXT ".so"
+18: #define TCL_CFG_DEBUG 1
+19: #define TCL_TOMMATH 1
+20: #define MP_PREC 4
+21: #define _LARGEFILE64_SOURCE 1
+22: #define TCL_WIDE_INT_TYPE long long
+23: #define HAVE_STRUCT_STAT64 1
+24: #define HAVE_OPEN64 1
+25: #define HAVE_LSEEK64 1
+26: #define HAVE_TYPE_OFF64_T 1
+27: #define HAVE_OPENDIR 1
+28: #define HAVE_STRTOL 1
+29: #define HAVE_GETADDRINFO 1
+30: #define USE_TERMIOS 1
+31: #define TIME_WITH_SYS_TIME 1
+32: #define HAVE_LOCALTIME_R 1
+33: #define HAVE_TM_GMTOFF 1
+34: #define HAVE_TIMEZONE_VAR 1
+35: #define HAVE_BLKCNT_T 1
+36: #define HAVE_SIGNED_CHAR 1
+37: #define HAVE_LANGINFO 1
+38: #define TCL_UNLOAD_DLLS 1
+39: #define USE_DTRACE 1
+40: #define TCL_CFG_OPTIMIZED 1
+41: #define HAVE_PW_GECOS 1
+42: #define HAVE_LIBXFT 1
+43: #define HAVE_XFT 1
+44: #define RUBY_VERSION "1.9.3"
+45: #define RUBY_RELEASE_DATE "2013-05-15"
+46: #endif
 /* end */
 
---------------------
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/local/include conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/include conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/local/lib64 conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/local/lib conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/lib64 conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/lib conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-/* end */
-
-have_header: checking for tk.h... -------------------- no
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
-conftest.c:3:16: fatal error: tk.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tk.h>
-/* end */
-
---------------------
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/local/include conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-4: #include <tk.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/include conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-4: #include <tk.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/local/lib64 conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-4: #include <tk.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/local/lib conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-4: #include <tk.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/lib64 conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-4: #include <tk.h>
-/* end */
-
-"gcc -E -I../../.ext/include/x86_64-linux -I../.././include -I../.././ext/tk     -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -I/usr/lib conftest.c -o conftest.i"
-conftest.c:3:17: fatal error: tcl.h: No such file or directory
-compilation terminated.
-checked program was:
-/* begin */
-1: #include "ruby.h"
-2: 
-3: #include <tcl.h>
-4: #include <tk.h>
-/* end */
-
-Failed to configure tk. It will not be installed.
