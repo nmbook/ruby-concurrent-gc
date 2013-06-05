@@ -1329,10 +1329,9 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 	perror("fork");
 	exit(1);
     } else if (pid == 0) {
+	objspace->cgc_shared->pid = getpid();
 	child_garbage_collect(objspace);
 	exit(0);
-    } else {
-	objspace->cgc_shared->pid = pid;
     }
 }
 
@@ -2346,9 +2345,11 @@ slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot, int is_collec
     p = sweep_slot->slot; pend = p + sweep_slot->limit;
     while (p < pend) {
         if (!(p->as.basic.flags & FL_MARK)) {
+            /* TODO: obj_free needs to be called in parent */
 	    if (p->as.basic.flags &&
 		((deferred = obj_free(objspace, (VALUE)p)) ||
 		 (FL_TEST(p, FL_FINALIZE)))) {
+		/* TODO: finalization never happens */
 		if (!deferred) {
 		    p->as.free.flags = T_ZOMBIE;
 		    RDATA(p)->dfree = 0;
