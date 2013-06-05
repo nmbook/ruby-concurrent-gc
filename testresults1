@@ -1,0 +1,122 @@
+Branch: CGC (MASTER)
+
+Test: binarytrees
+Result: pid 11124 exit 0 (0.047992353 seconds)
+Test: binarytrees.jruby-3
+Result: pid 11128 exit 0 (0.047760825 seconds)
+Test: binarytreesredux
+Result: pid 11132 exit 0 (0.058430697 seconds)
+Test: chameneosredux
+./chameneosredux/chameneosredux.jruby:9:in `require': cannot load such file -- thread (LoadError)
+	from ./chameneosredux/chameneosredux.jruby:9:in `<main>'
+Result: pid 11136 exit 1 (0.029576269 seconds)
+Test: fannkuchredux
+./fannkuchredux/fannkuchredux.jruby:17:in `[]': no implicit conversion from nil to integer (TypeError)
+	from ./fannkuchredux/fannkuchredux.jruby:17:in `fannkuch'
+	from ./fannkuchredux/fannkuchredux.jruby:57:in `<main>'
+Result: pid 11139 exit 1 (0.029722724 seconds)
+Test: fasta
+Result: pid 11142 exit 0 (0.030025239 seconds)
+Excluded: knucleotide
+Test: knucleotide.jruby-2
+./knucleotide/knucleotide.jruby-2.jruby:37: syntax error, unexpected keyword_while, expecting ']'
+while (line !~ /^>/) & line do
+     ^
+Result: pid 11145 exit 1 (0.028855206 seconds)
+Test: knucleotide.jruby-3
+^C./testsuite.rb:17:in ``'./knucleotide/knucleotide.jruby-3.jruby:38:in `gets': Interrupt
+	from ./knucleotide/knucleotide.jruby-3.jruby:38:in `<main>'
+: Interrupt
+	from ./testsuite.rb:17:in `block in <main>'
+	from /usr/share/ruby/find.rb:41:in `block in find'
+	from /usr/share/ruby/find.rb:40:in `catch'
+	from /usr/share/ruby/find.rb:40:in `find'
+	from ./testsuite.rb:9:in `<main>'
+
+nbook@nbook:bench$ ./testsuite.rb 
+Test: binarytrees
+Result: pid 11177 exit 0 (0.049328336 seconds)
+Test: binarytrees.jruby-3
+Result: pid 11181 exit 0 (0.018156425 seconds)
+Test: binarytreesredux
+Result: pid 11185 exit 0 (0.020991357 seconds)
+Test: chameneosredux
+./chameneosredux/chameneosredux.jruby:9:in `require': cannot load such file -- thread (LoadError)
+	from ./chameneosredux/chameneosredux.jruby:9:in `<main>'
+Result: pid 11189 exit 1 (0.007677681 seconds)
+Test: fannkuchredux
+./fannkuchredux/fannkuchredux.jruby:17:in `[]': no implicit conversion from nil to integer (TypeError)
+	from ./fannkuchredux/fannkuchredux.jruby:17:in `fannkuch'
+	from ./fannkuchredux/fannkuchredux.jruby:57:in `<main>'
+Result: pid 11192 exit 1 (0.007192614 seconds)
+Test: fasta
+Result: pid 11195 exit 0 (0.007372255 seconds)
+Excluded: knucleotide
+Excluded: knucleotide.jruby-2
+Excluded: knucleotide.jruby-3
+Test: mandelbrot.jruby-2
+./mandelbrot/mandelbrot.jruby-2.jruby:119:in `block (3 levels) in <main>': method `method_missing' called on terminated object (0x00000001e1c1d8 flags=0x0 klass=0x0) (NotImplementedError)
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:112:in `times'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:112:in `block (2 levels) in <main>'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:106:in `times'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:106:in `block in <main>'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:40:in `block in execute'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:37:in `step'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:37:in `execute'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:28:in `block in initialize'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:26:in `fork'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:26:in `initialize'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:54:in `new'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:54:in `block (2 levels) in parallel_map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:53:in `each'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:53:in `map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:53:in `block in parallel_map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:52:in `tap'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:52:in `parallel_map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:98:in `<main>'
+waitpid: No child processes
+...SEGFAULT...
+./mandelbrot/mandelbrot.jruby-2.jruby:41:in `write': Broken pipe (Errno::EPIPE)
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:41:in `block in execute'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:37:in `step'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:37:in `execute'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:28:in `block in initialize'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:26:in `fork'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:26:in `initialize'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:54:in `new'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:54:in `block (2 levels) in parallel_map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:53:in `each'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:53:in `map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:53:in `block in parallel_map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:52:in `tap'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:52:in `parallel_map'
+	from ./mandelbrot/mandelbrot.jruby-2.jruby:98:in `<main>'
+Result: pid 11198 exit 1 (0.459247706 seconds)
+Test: mandelbrot.jruby-3
+Result: pid 11253 exit 0 (0.03294516 seconds)
+Test: meteor
+Result: pid 11256 exit 0 (117.174849158 seconds)
+Test: meteor.jruby-2
+Result: pid 17164 exit 0 (76.889997383 seconds)
+Test: nbody.jruby-2
+./nbody/nbody.jruby-2.jruby:127:in `Integer': can't convert nil into Integer (TypeError)
+	from ./nbody/nbody.jruby-2.jruby:127:in `<main>'
+Result: pid 21061 exit 1 (0.007991545 seconds)
+Test: pidigits
+./pidigits/pidigits.jruby:75:in `Integer': can't convert nil into Integer (TypeError)
+	from ./pidigits/pidigits.jruby:75:in `<main>'
+Result: pid 21064 exit 1 (0.0074617 seconds)
+Test: pidigits.jruby-3
+Result: pid 21067 exit 0 (0.008954778 seconds)
+Test: regexdna
+^C./regexdna/regexdna.jruby:6:in `readlines': Interrupt
+	from ./regexdna/regexdna.jruby:6:in `<main>'
+Result: pid 21070 SIGINT (signal 2) (915.060637935 seconds)
+Test: regexdna.jruby-2
+./testsuite.rb:17:in ``': No such file or directory - /home/nbook/ruby-concurrent-gc/miniruby ./regexdna/regexdna.jruby-2.jruby (Errno::ENOENT)
+	from ./testsuite.rb:17:in `block in <main>'
+	from /usr/share/ruby/find.rb:41:in `block in find'
+	from /usr/share/ruby/find.rb:40:in `catch'
+	from /usr/share/ruby/find.rb:40:in `find'
+	from ./testsuite.rb:9:in `<main>'
+
