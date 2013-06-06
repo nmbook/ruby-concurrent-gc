@@ -1207,7 +1207,7 @@ signal_sigchld(int signal)
 {
     rb_objspace_t *objspace = &rb_objspace;
     pid_t child = waitpid(-1, NULL, 0);
-    printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
+    // printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
     if ( child < 0) {
 	perror("waitpid");
 	exit(1);
