@@ -1196,7 +1196,6 @@ cgc_finish( rb_objspace_t *objspace )
     /* double insurance that cgc_unprocessed is written between the
        progress flag is unset */
     __sync_synchronize();
-    pid_t mypid = getpid( );
 
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
@@ -1205,7 +1204,6 @@ cgc_finish( rb_objspace_t *objspace )
 static void
 signal_sigchld(int signal)
 {
-    rb_objspace_t *objspace = &rb_objspace;
     pid_t child = waitpid(-1, NULL, 0);
     // printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
     if ( child < 0) {
