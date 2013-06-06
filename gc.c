@@ -1205,8 +1205,9 @@ static void
 signal_sigchld(int signal)
 {
     rb_objspace_t *objspace = &rb_objspace;
-    printf("SIGCHLD pid = %d\n", objspace->cgc_shared->pid);
-    if (waitpid(objspace->cgc_shared->pid, NULL, 0) < 0) {
+    pid_t child = waitpid(-1, NULL, 0);
+    printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
+    if ( child < 0) {
 	perror("waitpid");
 	exit(1);
     }
@@ -1229,7 +1230,7 @@ static void
 init_heap(rb_objspace_t *objspace)
 {
     init_cgc_shared(objspace);
-    // signal(SIGCHLD, signal_sigchld);
+    signal(SIGCHLD, signal_sigchld);
     add_heap_slots(objspace, HEAP_MIN_SLOTS / HEAP_OBJ_LIMIT);
     init_mark_stack(&objspace->mark_stack);
 #ifdef USE_SIGALTSTACK
