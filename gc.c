@@ -2379,9 +2379,11 @@ sweep_obj(rb_objspace_t *objspace, RVALUE *p)
 	p->as.free.flags |= FL_MARK;
 	p->as.free.next = deferred_final_list;
 	deferred_final_list = p;
+	objspace->heap.final_num++;
 	return TRUE;
     }
     else {
+	objspace->heap.free_num++;
 	return FALSE;
     }
 }
@@ -2396,11 +2398,8 @@ slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot, int is_collec
     p = sweep_slot->slot; pend = p + sweep_slot->limit;
     while (p < pend) {
         if (!(p->as.basic.flags & FL_MARK)) {
-	    if (!is_collector && sweep_obj(objspace, p)) {
-		final_num++;
-	    } else {
+	    if (!sweep_obj(objspace, p)) {
 		add_freelist(objspace, p, is_collector);
-		free_num++;
 	    }
         }
         else if (BUILTIN_TYPE(p) == T_ZOMBIE) {
