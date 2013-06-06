@@ -35,18 +35,18 @@ def create_collector_support
       new_regions[i] = create_regions( i)
     end
 
-    @@converter = []
-    10.times { | row | @@converter.push((row % 2 == 0) ? all_evens : all_odds) }
-    @@bit_counts = bit_counts
-    @@regions = new_regions.collect { | set | set.collect { | value | [ value, bit_counts[value], value] } }
+    $converter = []
+    10.times { | row | $converter.push((row % 2 == 0) ? all_evens : all_odds) }
+    $bit_counts = bit_counts
+    $regions = new_regions.collect { | set | set.collect { | value | [ value, bit_counts[value], value] } }
 
   end
   
 def prunable( board, location, slotting = false)
   collectors = []
   (location / 6).to_i.upto(9) do | row_on | 
-    regions = @@regions[(board >> (row_on * 6)) & 0b11111 ^ 0b11111]
-    converter = @@converter[row_on]
+    regions = $regions[(board >> (row_on * 6)) & 0b11111 ^ 0b11111]
+    converter = $converter[row_on]
     initial_collector_count = collectors.length
     regions.each do | region |
       collector_found = nil

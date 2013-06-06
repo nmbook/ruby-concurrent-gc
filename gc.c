@@ -350,7 +350,7 @@ typedef struct mark_stack {
     size_t unused_cache_size;
 } mark_stack_t;
 
-#define SHARED_LIST_SIZE 100000
+#define CGC_SHARED_LIST_SIZE 100000
 
 struct cgc_shared_t {
     VALUE flags;
@@ -362,8 +362,6 @@ struct cgc_shared_t {
     RVALUE **list;
     int cgc_unprocessed;
 };
-
-#define FREELIST_MIN_SIZE 512
 
 #define CGC_FL_IN_PROGRESS  ((VALUE) (1))
 #define CGC_FL_HEAPS_INC    ((VALUE) (1 << 1))
@@ -1161,7 +1159,7 @@ init_cgc_shared(rb_objspace_t *objspace)
 	perror("shmget");
 	exit(1);
     }
-    list_id = shmget(IPC_PRIVATE, SHARED_LIST_SIZE * sizeof(RVALUE *), SHM_R | SHM_W | IPC_CREAT);
+    list_id = shmget(IPC_PRIVATE, CGC_SHARED_LIST_SIZE * sizeof(RVALUE *), SHM_R | SHM_W | IPC_CREAT);
     if (list_id < 0) {
 	perror("shmget");
 	exit(1);
@@ -1179,17 +1177,13 @@ init_cgc_shared(rb_objspace_t *objspace)
     objspace->cgc_shared = (struct cgc_shared_t *)struct_val;
     objspace->cgc_shared->flags = 0;
     objspace->cgc_shared->size = 0;
-    objspace->cgc_shared->cap = SHARED_LIST_SIZE;
+    objspace->cgc_shared->cap = CGC_SHARED_LIST_SIZE;
     objspace->cgc_shared->shmid = struct_id;
     objspace->cgc_shared->shmid_list = list_id;
     objspace->cgc_shared->list = (RVALUE **)list_val;
 
     objspace->cgc_shared->cgc_unprocessed = FALSE;
 }
-
-static void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
-static void set_heaps_increment(rb_objspace_t *objspace);
-static int heaps_increment(rb_objspace_t *objspace);
 
 static void
 cgc_finish( rb_objspace_t *objspace )
@@ -1200,7 +1194,6 @@ cgc_finish( rb_objspace_t *objspace )
     /* double insurance that cgc_unprocessed is written between the
        progress flag is unset */
     __sync_synchronize();
-    pid_t mypid = getpid( );
 
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
@@ -1209,9 +1202,8 @@ cgc_finish( rb_objspace_t *objspace )
 static void
 signal_sigchld(int signal)
 {
-    rb_objspace_t *objspace = &rb_objspace;
     pid_t child = waitpid(-1, NULL, 0);
-    printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
+    // printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
     if ( child < 0) {
 	perror("waitpid");
 	exit(1);
@@ -1336,6 +1328,10 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
     pid_t pid;
     objspace->cgc_shared->flags |= CGC_FL_IN_PROGRESS;
     objspace->cgc_shared->size = 0;
+
+    /* Count this as a GC run for GC.stat */
+    objspace->count++;
+
     pid = fork();
     if (pid < 0) {
 	perror("fork");
@@ -1351,12 +1347,17 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 #define RANY(o) ((RVALUE*)(o))
 
 static int sweep_obj(rb_objspace_t *objspace, RVALUE *p);
-static void free_unused_heaps(rb_objspace_t *objspace);
+static inline void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
+
+static void update_free_min(rb_objspace_t *objspace);
 
 static void
 cgc_handle_unprocessed(rb_objspace_t *objspace) {
     unsigned int i;
     RVALUE *p;
+
+    /* Update the free_min to space out next GC run */
+    update_free_min(objspace);
 
     for (i = 0; i < objspace->cgc_shared->size; i++) {
 	p = objspace->cgc_shared->list[i];
@@ -1409,7 +1410,7 @@ rb_newobj(void)
 	cgc_handle_unprocessed(objspace);
     }
 
-    if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
+    if (objspace->heap.freelist_length <= objspace->heap.free_min) {
 	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0 &&
 	    objspace->cgc_shared->cgc_unprocessed == FALSE ) {
 	    concurrent_garbage_collect(objspace);
@@ -2381,9 +2382,11 @@ sweep_obj(rb_objspace_t *objspace, RVALUE *p)
 	p->as.free.flags |= FL_MARK;
 	p->as.free.next = deferred_final_list;
 	deferred_final_list = p;
+	objspace->heap.final_num++;
 	return TRUE;
     }
     else {
+	objspace->heap.free_num++;
 	return FALSE;
     }
 }
@@ -2398,11 +2401,8 @@ slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot, int is_collec
     p = sweep_slot->slot; pend = p + sweep_slot->limit;
     while (p < pend) {
         if (!(p->as.basic.flags & FL_MARK)) {
-	    if (!is_collector && sweep_obj(objspace, p)) {
-		final_num++;
-	    } else {
+	    if (!sweep_obj(objspace, p)) {
 		add_freelist(objspace, p, is_collector);
-		free_num++;
 	    }
         }
         else if (BUILTIN_TYPE(p) == T_ZOMBIE) {
@@ -2455,16 +2455,22 @@ ready_to_gc(rb_objspace_t *objspace)
 }
 
 static void
+update_free_min(rb_objspace_t *objspace)
+{
+    objspace->heap.free_min = (size_t)((heaps_used * HEAP_OBJ_LIMIT)  * 0.2);
+    if (objspace->heap.free_min < initial_free_min) {
+	objspace->heap.do_heap_free = heaps_used * HEAP_OBJ_LIMIT;
+	objspace->heap.free_min = initial_free_min;
+    }
+}
+
+static void
 before_gc_sweep(rb_objspace_t *objspace)
 {
     freelist = 0;
     objspace->heap.freelist_length = 0;
     objspace->heap.do_heap_free = (size_t)((heaps_used * HEAP_OBJ_LIMIT) * 0.65);
-    objspace->heap.free_min = (size_t)((heaps_used * HEAP_OBJ_LIMIT)  * 0.2);
-    if (objspace->heap.free_min < initial_free_min) {
-	objspace->heap.do_heap_free = heaps_used * HEAP_OBJ_LIMIT;
-        objspace->heap.free_min = initial_free_min;
-    }
+    update_free_min(objspace);
     objspace->heap.sweep_slots = heaps;
     objspace->heap.free_num = 0;
 
@@ -2800,20 +2806,6 @@ mark_current_machine_context(rb_objspace_t *objspace, rb_thread_t *th)
     mark_locations_array(objspace, (VALUE*)((char*)STACK_END + 2),
 			 (STACK_START - STACK_END));
 #endif
-}
-
-
-/* NOTE: only call this from forked child! otherwise freelist will be messed up! */
-static void
-mark_current_freelist(rb_objspace_t *objspace, RVALUE *list)
-{
-    RVALUE *p = list;
-    while (p) {
-       /* set 0'd flags to just FL_MARK to indicate to concurrent sweep not to include this in child's freelist */
-       /* do NOT push to mark stack or store that this has been freed, it's already free... */
-       p->as.basic.flags = FL_MARK;
-       p = p->as.free.next;
-    }
 }
 
 

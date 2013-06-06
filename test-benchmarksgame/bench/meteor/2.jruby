@@ -256,7 +256,7 @@ def is_even( location)
 end
 
 # support function that create three utility maps:
-#  @@converter -- for each row an array that maps a five bit row (via array mapping) 
+#  $converter -- for each row an array that maps a five bit row (via array mapping) 
 #                 to the a a five bit representation of the bits below it
 #  @@bit_count -- maps a five bit row (via array mapping) to the number of 1s in the row
 #  @@new_regions -- maps a five bit row (via array mapping) to an array of "region" arrays
@@ -289,10 +289,10 @@ def create_collector_support
     new_regions[i] = create_regions( i)
   end
 
-  @@converter = []
-  10.times { | row | @@converter.push((row % 2 == 0) ? all_evens : all_odds) }
-  @@bit_counts = bit_counts
-  @@regions = new_regions.collect { | set | set.collect { | value | [ value, bit_counts[value], value] } }
+  $converter = []
+  10.times { | row | $converter.push((row % 2 == 0) ? all_evens : all_odds) }
+  $bit_counts = bit_counts
+  $regions = new_regions.collect { | set | set.collect { | value | [ value, bit_counts[value], value] } }
 end
  
 # determines if a board is punable, meaning that there is no possibility that it 
@@ -326,8 +326,8 @@ def prunable( board, location, slotting = false)
   # loop accross the rows
   (location / 6).to_i.upto(9) do | row_on | 
     # obtain a set of regions representing the bits of the curent row.  
-    regions = @@regions[(board >> (row_on * 6)) & 0b11111]
-    converter = @@converter[row_on]
+    regions = $regions[(board >> (row_on * 6)) & 0b11111]
+    converter = $converter[row_on]
     
     # track the number of collectors at the start of the cycle so that
     # we don't compute against newly created collectors, only existing collectors
