@@ -360,6 +360,7 @@ struct cgc_shared_t {
     int shmid;
     int shmid_list;
     RVALUE **list;
+    int cgc_unprocessed;
 };
 
 #define FREELIST_MIN_SIZE 512
@@ -415,7 +416,6 @@ typedef struct rb_objspace {
 	double invoke_time;
     } profile;
     volatile struct cgc_shared_t *cgc_shared;
-    volatile int cgc_unprocessed;
     struct gc_list *global_list;
     size_t count;
     int gc_stress;
@@ -1183,11 +1183,23 @@ init_cgc_shared(rb_objspace_t *objspace)
     objspace->cgc_shared->shmid = struct_id;
     objspace->cgc_shared->shmid_list = list_id;
     objspace->cgc_shared->list = (RVALUE **)list_val;
+
+    objspace->cgc_shared->cgc_unprocessed = FALSE;
 }
 
 static void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
 static void set_heaps_increment(rb_objspace_t *objspace);
 static int heaps_increment(rb_objspace_t *objspace);
+
+static void
+cgc_finish( rb_objspace_t *objspace )
+{
+    objspace->cgc_shared->pid = 0;
+    objspace->cgc_shared->cgc_unprocessed = TRUE;
+    //printf("MERGED %d FREE\n", i);
+    /* reset flags to end any loops in newobj */
+    objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
+}
 
 static void
 signal_sigchld(int signal)
@@ -1198,11 +1210,7 @@ signal_sigchld(int signal)
 	perror("waitpid");
 	exit(1);
     }
-    objspace->cgc_shared->pid = 0;
-    objspace->cgc_unprocessed = TRUE;
-    //printf("MERGED %d FREE\n", i);
-    /* reset flags to end any loops in newobj */
-    objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
+    cgc_finish( objspace );
 }
 
 static void
@@ -1222,7 +1230,6 @@ static void
 init_heap(rb_objspace_t *objspace)
 {
     init_cgc_shared(objspace);
-    objspace->cgc_unprocessed = FALSE;
     signal(SIGCHLD, signal_sigchld);
     add_heap_slots(objspace, HEAP_MIN_SLOTS / HEAP_OBJ_LIMIT);
     init_mark_stack(&objspace->mark_stack);
@@ -1369,7 +1376,7 @@ cgc_handle_unprocessed(rb_objspace_t *objspace) {
 	heaps_increment(objspace);
 	objspace->cgc_shared->flags &= ~CGC_FL_HEAPS_INC;
     }
-    objspace->cgc_unprocessed = FALSE;
+    objspace->cgc_shared->cgc_unprocessed = FALSE;
 }
 
 VALUE
@@ -1391,7 +1398,7 @@ rb_newobj(void)
 	}
     }
 
-    if (objspace->cgc_unprocessed) {
+    if (objspace->cgc_shared->cgc_unprocessed) {
 	cgc_handle_unprocessed(objspace);
     }
 
@@ -1405,7 +1412,7 @@ rb_newobj(void)
 	while ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) != 0) {
 	    /* spin until signal */
 	}
-	if (objspace->cgc_unprocessed) {
+	if (objspace->cgc_shared->cgc_unprocessed) {
 	    cgc_handle_unprocessed(objspace);
 	}
 	if (UNLIKELY(!freelist)) {
