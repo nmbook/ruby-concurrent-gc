@@ -1210,7 +1210,6 @@ signal_sigchld(int signal)
 	perror("waitpid");
 	exit(1);
     }
-    // cgc_finish( objspace );
 }
 
 static void
