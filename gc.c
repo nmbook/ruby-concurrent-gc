@@ -1196,7 +1196,12 @@ cgc_finish( rb_objspace_t *objspace )
 {
     objspace->cgc_shared->pid = 0;
     objspace->cgc_shared->cgc_unprocessed = TRUE;
-    //printf("MERGED %d FREE\n", i);
+
+    /* double insurance that cgc_unprocessed is written between the
+       progress flag is unset */
+    __sync_synchronize();
+    pid_t mypid = getpid( );
+
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
 }
@@ -1393,6 +1398,7 @@ rb_newobj(void)
     }
 
     if (UNLIKELY(ruby_gc_stress && !ruby_disable_gc_stress)) {
+        assert(0);
 	if (!garbage_collect(objspace)) {
 	    during_gc = 0;
 	    rb_memerror();
@@ -1404,7 +1410,8 @@ rb_newobj(void)
     }
 
     if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
-	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0) {
+	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0 &&
+	    objspace->cgc_shared->cgc_unprocessed == FALSE ) {
 	    concurrent_garbage_collect(objspace);
 	}
     }
