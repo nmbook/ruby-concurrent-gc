@@ -24,4 +24,4 @@ parse.h
 ruby-1.9.pc
 enc.mk
 rbconfig.rb
-
+ruby
