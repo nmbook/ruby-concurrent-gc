@@ -1337,6 +1337,9 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 
 #define RANY(o) ((RVALUE*)(o))
 
+static int sweep_obj(rb_objspace_t *objspace, RVALUE *p);
+static void free_unused_heaps(rb_objspace_t *objspace);
+
 static void
 cgc_handle_unprocessed(rb_objspace_t *objspace) {
     unsigned int i;
@@ -1344,8 +1347,18 @@ cgc_handle_unprocessed(rb_objspace_t *objspace) {
 
     for (i = 0; i < objspace->cgc_shared->size; i++) {
 	p = objspace->cgc_shared->list[i];
-	add_freelist(&rb_objspace, p, FALSE);
+	if (!sweep_obj(objspace, p))
+	    add_freelist(objspace, p, FALSE);
+	/* TODO: perhaps need to set free_num/final_num on heap */
     }
+
+    if (deferred_final_list) {
+        rb_thread_t *th = GET_THREAD();
+        if (th) {
+            RUBY_VM_SET_FINALIZER_INTERRUPT(th);
+        }
+    }
+
     if (objspace->cgc_shared->flags & CGC_FL_MALLOC_INC) {
 	malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
 	if (malloc_limit < initial_malloc_limit) malloc_limit = initial_malloc_limit;
@@ -2334,32 +2347,45 @@ free_unused_heaps(rb_objspace_t *objspace)
     }
 }
 
+/* Perform the free/defer/etc for a single object
+ *
+ * Returns true if the object needs to be finalized
+ */
+static int
+sweep_obj(rb_objspace_t *objspace, RVALUE *p)
+{
+    int deferred;
+
+    if (p->as.basic.flags &&
+	    ((deferred = obj_free(objspace, (VALUE)p)) ||
+	     (FL_TEST(p, FL_FINALIZE)))) {
+	if (!deferred) {
+	    p->as.free.flags = T_ZOMBIE;
+	    RDATA(p)->dfree = 0;
+	}
+	p->as.free.flags |= FL_MARK;
+	p->as.free.next = deferred_final_list;
+	deferred_final_list = p;
+	return TRUE;
+    }
+    else {
+	return FALSE;
+    }
+}
+
 static void
 slot_sweep(rb_objspace_t *objspace, struct heaps_slot *sweep_slot, int is_collector)
 {
     size_t free_num = 0, final_num = 0;
     RVALUE *p, *pend;
     RVALUE *free = freelist, *final = deferred_final_list;
-    int deferred;
 
     p = sweep_slot->slot; pend = p + sweep_slot->limit;
     while (p < pend) {
         if (!(p->as.basic.flags & FL_MARK)) {
-            /* TODO: obj_free needs to be called in parent */
-	    if (p->as.basic.flags &&
-		((deferred = obj_free(objspace, (VALUE)p)) ||
-		 (FL_TEST(p, FL_FINALIZE)))) {
-		/* TODO: finalization never happens */
-		if (!deferred) {
-		    p->as.free.flags = T_ZOMBIE;
-		    RDATA(p)->dfree = 0;
-		}
-		p->as.free.flags |= FL_MARK;
-		p->as.free.next = deferred_final_list;
-		deferred_final_list = p;
+	    if (!is_collector && sweep_obj(objspace, p)) {
 		final_num++;
-	    }
-	    else {
+	    } else {
 		add_freelist(objspace, p, is_collector);
 		free_num++;
 	    }
