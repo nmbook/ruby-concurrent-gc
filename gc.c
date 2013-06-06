@@ -1196,7 +1196,12 @@ cgc_finish( rb_objspace_t *objspace )
 {
     objspace->cgc_shared->pid = 0;
     objspace->cgc_shared->cgc_unprocessed = TRUE;
-    //printf("MERGED %d FREE\n", i);
+
+    /* double insurance that cgc_unprocessed is written between the
+       progress flag is unset */
+    __sync_synchronize();
+    pid_t mypid = getpid( );
+
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
 }
@@ -1205,8 +1210,9 @@ static void
 signal_sigchld(int signal)
 {
     rb_objspace_t *objspace = &rb_objspace;
-    printf("SIGCHLD pid = %d\n", objspace->cgc_shared->pid);
-    if (waitpid(objspace->cgc_shared->pid, NULL, 0) < 0) {
+    pid_t child = waitpid(-1, NULL, 0);
+    printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
+    if ( child < 0) {
 	perror("waitpid");
 	exit(1);
     }
@@ -1229,7 +1235,7 @@ static void
 init_heap(rb_objspace_t *objspace)
 {
     init_cgc_shared(objspace);
-    // signal(SIGCHLD, signal_sigchld);
+    signal(SIGCHLD, signal_sigchld);
     add_heap_slots(objspace, HEAP_MIN_SLOTS / HEAP_OBJ_LIMIT);
     init_mark_stack(&objspace->mark_stack);
 #ifdef USE_SIGALTSTACK
@@ -1392,6 +1398,7 @@ rb_newobj(void)
     }
 
     if (UNLIKELY(ruby_gc_stress && !ruby_disable_gc_stress)) {
+        assert(0);
 	if (!garbage_collect(objspace)) {
 	    during_gc = 0;
 	    rb_memerror();
@@ -1403,7 +1410,8 @@ rb_newobj(void)
     }
 
     if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
-	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0) {
+	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0 &&
+	    objspace->cgc_shared->cgc_unprocessed == FALSE ) {
 	    concurrent_garbage_collect(objspace);
 	}
     }
