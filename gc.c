@@ -355,12 +355,12 @@ typedef struct mark_stack {
 struct cgc_shared_t {
     VALUE flags;
     pid_t pid;
-    size_t size;
-    size_t cap;
     int shmid;
     int shmid_list;
     RVALUE **list;
     int cgc_unprocessed;
+    size_t start; /* Mutator removes objects from here */
+    size_t end;   /* Collector adds objects to here */
 };
 
 #define CGC_FL_IN_PROGRESS  ((VALUE) (1))
@@ -414,6 +414,7 @@ typedef struct rb_objspace {
 	double invoke_time;
     } profile;
     volatile struct cgc_shared_t *cgc_shared;
+    size_t cgc_start;
     struct gc_list *global_list;
     size_t count;
     int gc_stress;
@@ -1176,13 +1177,13 @@ init_cgc_shared(rb_objspace_t *objspace)
     }
     objspace->cgc_shared = (struct cgc_shared_t *)struct_val;
     objspace->cgc_shared->flags = 0;
-    objspace->cgc_shared->size = 0;
-    objspace->cgc_shared->cap = CGC_SHARED_LIST_SIZE;
     objspace->cgc_shared->shmid = struct_id;
     objspace->cgc_shared->shmid_list = list_id;
     objspace->cgc_shared->list = (RVALUE **)list_val;
 
     objspace->cgc_shared->cgc_unprocessed = FALSE;
+    objspace->cgc_shared->start = 0;
+    objspace->cgc_shared->end   = 0;
 }
 
 static void
@@ -1198,6 +1199,8 @@ cgc_finish( rb_objspace_t *objspace )
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
 }
+#define CGC_MODULO_INC(i) (((i) + 1) % CGC_SHARED_LIST_SIZE)
+#define CGC_SHARED_FREE ((CGC_SHARED_LIST_SIZE + objspace->cgc_shared->end - objspace->cgc_shared->start) % CGC_SHARED_LIST_SIZE)
 
 static void
 signal_sigchld(int signal)
@@ -1291,6 +1294,21 @@ rb_during_gc(void)
 static int ready_to_gc(rb_objspace_t *objspace);
 static void gc_marks(rb_objspace_t *objspace, int is_collector);
 
+/* Mark everything on the shared free-list
+ * Note: uses cgc_start instead of cgc_shared->start to avoid race
+ */
+static void
+mark_shared_list(rb_objspace_t *objspace)
+{
+    size_t i;
+    size_t start  = objspace->cgc_start;
+    size_t end    = objspace->cgc_shared->end;
+    RVALUE **list = objspace->cgc_shared->list;
+    for (i = start; i != end; i = CGC_MODULO_INC(i))
+	list[i]->as.free.flags |= FL_MARK;
+}
+
+
 static void
 child_garbage_collect(rb_objspace_t *objspace)
 {
@@ -1312,6 +1330,7 @@ child_garbage_collect(rb_objspace_t *objspace)
     /* rest_sweep(objspace); for lazy sweep */
 
     during_gc++;
+    mark_shared_list(objspace);
     gc_marks(objspace, TRUE);
 
     GC_PROF_SWEEP_TIMER_START;
@@ -1327,7 +1346,10 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 {
     pid_t pid;
     objspace->cgc_shared->flags |= CGC_FL_IN_PROGRESS;
-    objspace->cgc_shared->size = 0;
+
+    /* save start point for child collector
+     * Avoids races with marking freelist and allocation */
+    objspace->cgc_start = objspace->cgc_shared->start;
 
     /* Count this as a GC run for GC.stat */
     objspace->count++;
@@ -1349,21 +1371,18 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 static int sweep_obj(rb_objspace_t *objspace, RVALUE *p);
 static inline void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
 
-static void update_free_min(rb_objspace_t *objspace);
-
 static void
-cgc_handle_unprocessed(rb_objspace_t *objspace) {
-    unsigned int i;
-    RVALUE *p;
+cgc_getobj(rb_objspace_t *objspace) {
+    volatile struct cgc_shared_t *shared = objspace->cgc_shared;
 
-    /* Update the free_min to space out next GC run */
-    update_free_min(objspace);
-
-    for (i = 0; i < objspace->cgc_shared->size; i++) {
-	p = objspace->cgc_shared->list[i];
-	if (!sweep_obj(objspace, p))
+    while (shared->start != shared->end) {
+	size_t i = shared->start;
+	RVALUE *p = shared->list[i];
+	shared->start = CGC_MODULO_INC(i);
+	if (!sweep_obj(objspace, p)) {
 	    add_freelist(objspace, p, FALSE);
-	/* TODO: perhaps need to set free_num/final_num on heap */
+	    break;
+	}
     }
 
     if (deferred_final_list) {
@@ -1372,6 +1391,14 @@ cgc_handle_unprocessed(rb_objspace_t *objspace) {
             RUBY_VM_SET_FINALIZER_INTERRUPT(th);
         }
     }
+}
+
+static void update_free_min(rb_objspace_t *objspace);
+
+static void
+cgc_handle_unprocessed(rb_objspace_t *objspace) {
+    /* Update the free_min to space out next GC run */
+    update_free_min(objspace);
 
     if (objspace->cgc_shared->flags & CGC_FL_MALLOC_INC) {
 	malloc_limit += (size_t)((malloc_increase - malloc_limit) * (double)objspace->heap.live_num / (heaps_used * HEAP_OBJ_LIMIT));
@@ -1410,32 +1437,23 @@ rb_newobj(void)
 	cgc_handle_unprocessed(objspace);
     }
 
-    if (objspace->heap.freelist_length <= objspace->heap.free_min) {
+    if (CGC_SHARED_FREE + objspace->heap.freelist_length <= objspace->heap.free_min) {
 	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0 &&
 	    objspace->cgc_shared->cgc_unprocessed == FALSE ) {
 	    concurrent_garbage_collect(objspace);
 	}
     }
 
+    /* Pull an object from the shared list onto the free list */
+    cgc_getobj(objspace);
+
+    /* If we still don't have an object, allocate new space */
     if (UNLIKELY(!freelist)) {
-	while ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) != 0) {
-	    /* spin until signal */
-	}
-	if (objspace->cgc_shared->cgc_unprocessed) {
-	    cgc_handle_unprocessed(objspace);
-	}
-	if (UNLIKELY(!freelist)) {
-	    puts("still empty!");
-	    set_heaps_increment(objspace);
-	    heaps_increment(objspace);
-	    /*if (!gc_lazy_sweep(objspace)) {
-		during_gc = 0;
-		rb_memerror();
-	    }*/
-	}
+	set_heaps_increment(objspace);
+	heaps_increment(objspace);
+	if (UNLIKELY(!freelist))
+	    rb_memerror();
     }
-
-
 
     obj = (VALUE)freelist;
     freelist = freelist->as.free.next;
@@ -2270,15 +2288,18 @@ static inline void
 add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector)
 {
     if (is_collector) {
+	size_t start, end;
 	if (p->as.free.flags == 0) {
 	    return;
 	}
-	if (objspace->cgc_shared->size == objspace->cgc_shared->cap) {
+	start = objspace->cgc_shared->start;
+	end   = objspace->cgc_shared->end;
+	if (CGC_MODULO_INC(end) == start) {
 	    objspace->cgc_shared->flags |= CGC_FL_NO_SPACE;
 	    /* TODO: handle a full list */
 	} else {
-	    objspace->cgc_shared->list[objspace->cgc_shared->size] = p;
-	    objspace->cgc_shared->size++;
+	    objspace->cgc_shared->list[end] = p;
+	    objspace->cgc_shared->end = CGC_MODULO_INC(end);
 	}
     } else {
 	VALGRIND_MAKE_MEM_UNDEFINED((void*)p, sizeof(RVALUE));
@@ -3727,6 +3748,7 @@ gc_stat(int argc, VALUE *argv, VALUE self)
     rb_hash_aset(hash, ID2SYM(rb_intern("heap_free_num")), SIZET2NUM(objspace->heap.free_num));
     rb_hash_aset(hash, ID2SYM(rb_intern("heap_final_num")), SIZET2NUM(objspace->heap.final_num));
     rb_hash_aset(hash, ID2SYM(rb_intern("heap_freelist_length")), SIZET2NUM(objspace->heap.freelist_length));
+    rb_hash_aset(hash, ID2SYM(rb_intern("heap_shared_length")), SIZET2NUM(CGC_SHARED_FREE));
     return hash;
 }
 
