@@ -363,8 +363,6 @@ struct cgc_shared_t {
     int cgc_unprocessed;
 };
 
-#define FREELIST_MIN_SIZE 512
-
 #define CGC_FL_IN_PROGRESS  ((VALUE) (1))
 #define CGC_FL_HEAPS_INC    ((VALUE) (1 << 1))
 #define CGC_FL_MALLOC_INC   ((VALUE) (1 << 2))
@@ -1351,10 +1349,15 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 static int sweep_obj(rb_objspace_t *objspace, RVALUE *p);
 static inline void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
 
+static void update_free_min(rb_objspace_t *objspace);
+
 static void
 cgc_handle_unprocessed(rb_objspace_t *objspace) {
     unsigned int i;
     RVALUE *p;
+
+    /* Update the free_min to space out next GC run */
+    update_free_min(objspace);
 
     for (i = 0; i < objspace->cgc_shared->size; i++) {
 	p = objspace->cgc_shared->list[i];
@@ -1407,7 +1410,7 @@ rb_newobj(void)
 	cgc_handle_unprocessed(objspace);
     }
 
-    if (objspace->heap.freelist_length < FREELIST_MIN_SIZE) {
+    if (objspace->heap.freelist_length <= objspace->heap.free_min) {
 	if ((objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) == 0 &&
 	    objspace->cgc_shared->cgc_unprocessed == FALSE ) {
 	    concurrent_garbage_collect(objspace);
@@ -2452,16 +2455,22 @@ ready_to_gc(rb_objspace_t *objspace)
 }
 
 static void
+update_free_min(rb_objspace_t *objspace)
+{
+    objspace->heap.free_min = (size_t)((heaps_used * HEAP_OBJ_LIMIT)  * 0.2);
+    if (objspace->heap.free_min < initial_free_min) {
+	objspace->heap.do_heap_free = heaps_used * HEAP_OBJ_LIMIT;
+	objspace->heap.free_min = initial_free_min;
+    }
+}
+
+static void
 before_gc_sweep(rb_objspace_t *objspace)
 {
     freelist = 0;
     objspace->heap.freelist_length = 0;
     objspace->heap.do_heap_free = (size_t)((heaps_used * HEAP_OBJ_LIMIT) * 0.65);
-    objspace->heap.free_min = (size_t)((heaps_used * HEAP_OBJ_LIMIT)  * 0.2);
-    if (objspace->heap.free_min < initial_free_min) {
-	objspace->heap.do_heap_free = heaps_used * HEAP_OBJ_LIMIT;
-        objspace->heap.free_min = initial_free_min;
-    }
+    update_free_min(objspace);
     objspace->heap.sweep_slots = heaps;
     objspace->heap.free_num = 0;
 
