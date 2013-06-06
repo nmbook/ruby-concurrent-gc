@@ -3,12 +3,11 @@
 require "find"
 require "time"
 
-rpath = "/usr/bin/ruby"
-#rpath = "/home/nbook/ruby-concurrent-gc/miniruby"
+rpath = ARGV[0]
 exclude = [
     "revcomp-2", "regexdna-1", "regexdna-2", "regexdna-4", "knucleotide-2", "knucleotide-3", # take too long
     "knucleotide-1", "mandelbrot-2", "regexdna-3", # Process.fork
-    "chameneosredux-1", "fannkuchredux-1", "nbody-2", "pidigits-1", "spectralnorm-1", "spectralnorm-2", "spectralnorm-4", # requires full ruby
+    "chameneosredux-1", "fannkuchredux-1", "nbody-2", "pidigits-1", "spectralnorm-1", "spectralnorm-2", "spectralnorm-4", "threadring-1", "threadring-2" # requires full ruby
     ]
 
 # unused, but example structure plan...
