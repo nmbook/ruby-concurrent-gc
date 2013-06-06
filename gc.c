@@ -1332,6 +1332,10 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
     pid_t pid;
     objspace->cgc_shared->flags |= CGC_FL_IN_PROGRESS;
     objspace->cgc_shared->size = 0;
+
+    /* Count this as a GC run for GC.stat */
+    objspace->count++;
+
     pid = fork();
     if (pid < 0) {
 	perror("fork");
