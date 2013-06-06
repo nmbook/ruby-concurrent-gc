@@ -1187,10 +1187,6 @@ init_cgc_shared(rb_objspace_t *objspace)
     objspace->cgc_shared->cgc_unprocessed = FALSE;
 }
 
-static void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
-static void set_heaps_increment(rb_objspace_t *objspace);
-static int heaps_increment(rb_objspace_t *objspace);
-
 static void
 cgc_finish( rb_objspace_t *objspace )
 {
@@ -1351,7 +1347,7 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
 #define RANY(o) ((RVALUE*)(o))
 
 static int sweep_obj(rb_objspace_t *objspace, RVALUE *p);
-static void free_unused_heaps(rb_objspace_t *objspace);
+static inline void add_freelist(rb_objspace_t *objspace, RVALUE *p, int is_collector);
 
 static void
 cgc_handle_unprocessed(rb_objspace_t *objspace) {
