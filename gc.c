@@ -1210,7 +1210,7 @@ signal_sigchld(int signal)
 	perror("waitpid");
 	exit(1);
     }
-    cgc_finish( objspace );
+    // cgc_finish( objspace );
 }
 
 static void
@@ -1230,7 +1230,7 @@ static void
 init_heap(rb_objspace_t *objspace)
 {
     init_cgc_shared(objspace);
-    signal(SIGCHLD, signal_sigchld);
+    // signal(SIGCHLD, signal_sigchld);
     add_heap_slots(objspace, HEAP_MIN_SLOTS / HEAP_OBJ_LIMIT);
     init_mark_stack(&objspace->mark_stack);
 #ifdef USE_SIGALTSTACK
@@ -1338,6 +1338,7 @@ concurrent_garbage_collect(rb_objspace_t *objspace)
     } else if (pid == 0) {
 	objspace->cgc_shared->pid = getpid();
 	child_garbage_collect(objspace);
+	cgc_finish(objspace);
 	exit(0);
     }
 }
