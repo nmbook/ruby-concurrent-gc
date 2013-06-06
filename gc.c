@@ -350,7 +350,7 @@ typedef struct mark_stack {
     size_t unused_cache_size;
 } mark_stack_t;
 
-#define SHARED_LIST_SIZE 100000
+#define CGC_SHARED_LIST_SIZE 100000
 
 struct cgc_shared_t {
     VALUE flags;
@@ -1161,7 +1161,7 @@ init_cgc_shared(rb_objspace_t *objspace)
 	perror("shmget");
 	exit(1);
     }
-    list_id = shmget(IPC_PRIVATE, SHARED_LIST_SIZE * sizeof(RVALUE *), SHM_R | SHM_W | IPC_CREAT);
+    list_id = shmget(IPC_PRIVATE, CGC_SHARED_LIST_SIZE * sizeof(RVALUE *), SHM_R | SHM_W | IPC_CREAT);
     if (list_id < 0) {
 	perror("shmget");
 	exit(1);
@@ -1179,7 +1179,7 @@ init_cgc_shared(rb_objspace_t *objspace)
     objspace->cgc_shared = (struct cgc_shared_t *)struct_val;
     objspace->cgc_shared->flags = 0;
     objspace->cgc_shared->size = 0;
-    objspace->cgc_shared->cap = SHARED_LIST_SIZE;
+    objspace->cgc_shared->cap = CGC_SHARED_LIST_SIZE;
     objspace->cgc_shared->shmid = struct_id;
     objspace->cgc_shared->shmid_list = list_id;
     objspace->cgc_shared->list = (RVALUE **)list_val;
