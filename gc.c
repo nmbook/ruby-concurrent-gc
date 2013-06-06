@@ -2799,20 +2799,6 @@ mark_current_machine_context(rb_objspace_t *objspace, rb_thread_t *th)
 }
 
 
-/* NOTE: only call this from forked child! otherwise freelist will be messed up! */
-static void
-mark_current_freelist(rb_objspace_t *objspace, RVALUE *list)
-{
-    RVALUE *p = list;
-    while (p) {
-       /* set 0'd flags to just FL_MARK to indicate to concurrent sweep not to include this in child's freelist */
-       /* do NOT push to mark stack or store that this has been freed, it's already free... */
-       p->as.basic.flags = FL_MARK;
-       p = p->as.free.next;
-    }
-}
-
-
 static void
 gc_marks(rb_objspace_t *objspace, int is_collector)
 {
