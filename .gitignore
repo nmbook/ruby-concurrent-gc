@@ -1,21 +1,12 @@
 *.o
-*.a
 Makefile
 .cvsignore
 tags
 .ext/*
 *.swp
-*~
 .nfs*
 autom4te.cache/*
 insns_info.inc
-erb
-irb
-gem
-rake
-rdoc
-ri
-testrb
 miniruby
 config.log
 config.status
@@ -28,4 +19,6 @@ ruby
 .revision.time
 encdb.h
 transdb.h
+largefile.h
+libruby-static.a
 
