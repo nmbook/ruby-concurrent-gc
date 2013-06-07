@@ -1413,11 +1413,27 @@ cgc_handle_unprocessed(rb_objspace_t *objspace) {
     objspace->cgc_shared->cgc_unprocessed = FALSE;
 }
 
+/* Stuff for newobj timer */
+static FILE *timing_file;
+static long long
+getCycles(void) {
+    unsigned int tmp[2];
+
+    __asm__ ("rdtsc"
+	    : "=a" (tmp[1]), "=d" (tmp[0])
+	    : "c" (0x10) );
+
+    return ( ((long long)tmp[0] << 32 | tmp[1]) );
+}
+
 VALUE
 rb_newobj(void)
 {
     rb_objspace_t *objspace = &rb_objspace;
     VALUE obj;
+    long long start, end;
+
+    start = getCycles();
 
     if (UNLIKELY(during_gc)) {
 	dont_gc = 1;
@@ -1465,6 +1481,16 @@ rb_newobj(void)
     RANY(obj)->line = rb_sourceline();
 #endif
     GC_PROF_INC_LIVE_NUM;
+
+    end = getCycles();
+    if (UNLIKELY(!timing_file)) {
+	timing_file = fopen("rb_newobj.log", "w");
+	if (!timing_file) {
+	    perror("fopen");
+	    exit(1);
+	}
+    }
+    fprintf(timing_file, "%lld\n", end - start);
 
     return obj;
 }
