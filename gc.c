@@ -1206,6 +1206,9 @@ static void
 signal_sigchld(int signal)
 {
     pid_t child = waitpid(-1, NULL, 0);
+
+    while ((child = waitpid(-1, NULL, WNOHANG)) > 0)
+	/* reap */
     // printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
     if ( child < 0) {
 	perror("waitpid");
@@ -1345,6 +1348,10 @@ static void
 concurrent_garbage_collect(rb_objspace_t *objspace)
 {
     pid_t pid;
+
+    if (objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS)
+	return;
+
     objspace->cgc_shared->flags |= CGC_FL_IN_PROGRESS;
 
     /* save start point for child collector
@@ -1491,6 +1498,7 @@ rb_newobj(void)
 	}
     }
     fprintf(timing_file, "%lld\n", end - start);
+    fflush(timing_file);
 
     return obj;
 }
