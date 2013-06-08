@@ -1203,6 +1203,9 @@ static void
 signal_sigchld(int signal)
 {
     pid_t child = waitpid(-1, NULL, 0);
+
+    while ((child = waitpid(-1, NULL, WNOHANG)) > 0)
+	/* reap */
     // printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
     if ( child < 0) {
 	perror("waitpid");
