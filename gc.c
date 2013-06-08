@@ -1329,6 +1329,10 @@ static void
 concurrent_garbage_collect(rb_objspace_t *objspace)
 {
     pid_t pid;
+
+    if (objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS)
+	return;
+
     objspace->cgc_shared->flags |= CGC_FL_IN_PROGRESS;
     objspace->cgc_shared->size = 0;
 
