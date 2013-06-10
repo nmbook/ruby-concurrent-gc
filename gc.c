@@ -1188,7 +1188,6 @@ init_cgc_shared(rb_objspace_t *objspace)
 static void
 cgc_finish( rb_objspace_t *objspace )
 {
-    objspace->cgc_shared->pid = 0;
     objspace->cgc_shared->cgc_unprocessed = TRUE;
 
     /* double insurance that cgc_unprocessed is written between the
@@ -1197,19 +1196,22 @@ cgc_finish( rb_objspace_t *objspace )
 
     /* reset flags to end any loops in newobj */
     objspace->cgc_shared->flags &= ~CGC_FL_IN_PROGRESS;
+
+    printf("SIGCHLD collector pid = %d finishes\n", objspace->cgc_shared->pid);
+    objspace->cgc_shared->pid = 0;
 }
 
 static void
 signal_sigchld(int signal)
 {
     pid_t child = waitpid(-1, NULL, 0);
-
-    while ((child = waitpid(-1, NULL, WNOHANG)) > 0)
+    while ((child = waitpid(-1, NULL, WNOHANG)) > 0) {
 	/* reap */
-    // printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
-    if ( child < 0) {
-	perror("waitpid");
-	exit(1);
+	// printf("SIGCHLD collector pid = %d, reaped pid = %d\n", objspace->cgc_shared->pid, child);
+	if ( child < 0) {
+	    perror("waitpid");
+	    // exit(1);
+	}
     }
 }
 
@@ -1329,10 +1331,10 @@ static void
 concurrent_garbage_collect(rb_objspace_t *objspace)
 {
     pid_t pid;
-
-    if (objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS)
+    if (objspace->cgc_shared->flags & CGC_FL_IN_PROGRESS) {
 	return;
-
+    }
+    assert(! objspace->cgc_shared->cgc_unprocessed);
     objspace->cgc_shared->flags |= CGC_FL_IN_PROGRESS;
     objspace->cgc_shared->size = 0;
 
